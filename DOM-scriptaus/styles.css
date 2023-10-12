@@ -1,32 +1,37 @@
+*{
+  margin: 0px;
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
 .container{
   width: 100%;
   min-height:100vh;
-  background: lightgray;
-  padding: 10px;
+  background: linear-gradient(#ddd6f3, #faaca8);
+  padding: 70px;
 }
 .todo-lista{
   width: 100%;
   max-width: 540px;
-  background: lightblue;
-  margin: 100px auto 20px;
-  padding: 40px 30px 70px;
+  background: rgba(245, 245, 245, 0.852);
+  margin: 100px auto 10px;
+  padding: 40px 30px 50px;
   border-radius: 10px;
 }
 .todo-lista h2{
-  color: aqua;
+  color: #d2c8f3;
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
 }
-.rivi{
+.haku{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: lightgreen;
+  background: linear-gradient(to right, #ddd6f3, #faaca8);
   border-radius: 30px;
   padding-left: 20px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 input{
   flex: 1;
@@ -38,16 +43,16 @@ input{
 button{
   border: none;
   outline: none;
-  padding: 16px 50px;
-  background: pink;
-  color: white;
-  font-size: 16px;
+  padding: 10px 50px;
+  background: #faaca8;
+  color: whitesmoke;
+  font-size: 20px;
   cursor: pointer;
-  border-radius: 40px;
+  border-radius: 30px;
 }
 ul li{
   list-style: none;
-  font-size: 17px;
+  font-size: 15px;
   padding: 12px 8px 12px 50px;
   user-select: none;
   cursor: pointer;
@@ -59,18 +64,18 @@ ul li::before{
   height: 28px;
   width: 28px;
   border-radius: 50%;
-  background-image: url(TÄHÄN);
+  background-image: url(kuvat/unchecked.png);
   background-size: cover;
   background-position: center;
-  top: 12px;
+  top: 7px;
   left: 8px;
 }
-ul li.tehty{
+ul li.checked{
   color: gray;
   text-decoration: line-through;
 }
 ul li.checked::before{
-  background-image: url(TÄHÄN);
+  background-image: url(kuvat/checked.png);
 }
 ul li span{
   position: absolute;
@@ -78,7 +83,7 @@ ul li span{
   top: 5px;
   width: 40px;
   height: 40px;
-  font-size: 22px;
+  font-size: 24px;
   color: gray;
   line-height: 40px;
   text-align: center;
@@ -86,5 +91,5 @@ ul li span{
 }
 ul li span:hover{
   background: lightgray;
-
+  
 }
