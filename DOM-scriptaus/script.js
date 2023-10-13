@@ -2,8 +2,8 @@
 const inputBox = document.getElementById("hakukentta");
 const listContainer = document.getElementById("tehtavat");
 
-//Napin painaminen + virheilmoitus, jos hakukenttä on tyhjä
 function newElement(){
+//Virheilmoitus, jos hakukenttä on tyhjä
     if(inputBox.value === ''){
         alert("Kirjoita jotain!");
     }
@@ -11,11 +11,12 @@ function newElement(){
     else if (inputBox.value.length < 3) {
         alert("Liian lyhyt teksti!");
     }
-//Jos teksti täyttää kriteerit, nappia painamalla luot uuden kohdan listaan
+//Jos syötetty teksti täyttää kriteerit luodaan listaan uusi kohta
     else{
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
         listContainer.appendChild(li);
+//Rastimerkin luominen
         let span = document.createElement("span");
         span.innerHTML = "\u00d7";
         li.appendChild(span);
@@ -24,7 +25,7 @@ function newElement(){
     inputBox.value = "";
     saveData();
 }
-//Funktio näyttää tallennetut tehtävät
+//Funktio näyttää tallennetut listan kohdat
 function showTask(){
     listContainer.innerHTML = localStorage.getItem("data");
 }
@@ -41,7 +42,7 @@ listContainer.addEventListener("click", function(e){
         saveData();
     }
 }, false);
-//Funktio tallentaa tehtävät Local Storageen
+//Funktio tallentaa listan kohdat Local Storageen
 function saveData(){
     localStorage.setItem("data", listContainer.innerHTML);
 }
