@@ -1,4 +1,4 @@
-const inputBox = document.getElementById("input-box");
+const inputBox = document.getElementById("hakukentta");
 const listContainer = document.getElementById("tehtavat");
 
 //Napin painaminen + virheilmoitus, jos hakukenttä on tyhjä
