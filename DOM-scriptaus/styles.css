@@ -40,7 +40,7 @@ input{
   background: transparent;
   padding: 10px;
 }
-button{
+.nappi{
   border: none;
   outline: none;
   padding: 20px 50px;
@@ -50,13 +50,16 @@ button{
   cursor: pointer;
   border-radius: 30px;
 }
+.nappi:hover {
+  background-color: #ddd6f36e;
+}
 ul li{
+  cursor: pointer;
+  position: relative;
   list-style: none;
   font-size: 15px;
   padding: 12px 8px 12px 50px;
   user-select: none;
-  cursor: pointer;
-  position: relative;
 }
 ul li::before{
   content: '';
