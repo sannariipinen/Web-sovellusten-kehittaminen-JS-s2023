@@ -1,10 +1,12 @@
 const inputBox = document.getElementById("input-box");
 const listContainer = document.getElementById("list-container");
 
+//Napin painaminen + virheilmoitus, jos hakukenttä on tyhjä
 function newElement(){
     if(inputBox.value === ''){
         alert("Kirjoita jotain!");
     }
+    //Jos kenttässä on tekstiä, nappia painamalla luot uuden kohdan listaan
     else{
         let li = document.createElement("li");
         li.innerHTML = inputBox.value;
@@ -13,6 +15,7 @@ function newElement(){
         span.innerHTML = "\u00d7";
         li.appendChild(span);
     }
+    //saveData() komento tallentaa datan niin, että se pysyy sellaisenaan vaikka sulkisitkin to do -listan
     inputBox.value = "";
     saveData();
 }
