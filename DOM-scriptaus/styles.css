@@ -3,7 +3,7 @@
   font-family: sans-serif;
   box-sizing: border-box;
 }
-.container{
+.laatikko{
   width: 100%;
   min-height:100vh;
   background: linear-gradient(#ddd6f3, #faaca8);
@@ -15,7 +15,6 @@
   background: rgba(245, 245, 245, 0.852);
   margin: 100px auto 10px;
   padding: 40px 30px 50px;
-  border-radius: 10px;
 }
 .todo-lista h2{
   color: #d2c8f3;
@@ -29,9 +28,9 @@
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to right, #ddd6f3, #faaca8);
-  border-radius: 30px;
   padding-left: 20px;
   margin-bottom: 20px;
+  border-radius: 0px 30px 30px 0px;
 }
 input{
   flex: 1;
