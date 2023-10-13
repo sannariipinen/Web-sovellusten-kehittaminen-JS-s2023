@@ -1,5 +1,5 @@
 const inputBox = document.getElementById("input-box");
-const listContainer = document.getElementById("lista-laatikko");
+const listContainer = document.getElementById("tehtavat");
 
 //Napin painaminen + virheilmoitus, jos hakukenttä on tyhjä
 function newElement(){
