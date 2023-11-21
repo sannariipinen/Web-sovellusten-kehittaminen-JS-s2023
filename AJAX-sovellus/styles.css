@@ -4,7 +4,6 @@ body {
 header {
   display: flex;
   width: 100%;
-  justify-content: space-between;
   align-items: baseline;
   background-color: #000000;
 }
@@ -13,6 +12,7 @@ h2 {
   color: rgb(248, 196, 246);
   float: left;
   text-align: center;
+  padding: 14px 16px;
 }
 ul {
     list-style-type: none;
