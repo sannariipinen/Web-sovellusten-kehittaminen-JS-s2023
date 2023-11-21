@@ -7,12 +7,12 @@ header {
   align-items: baseline;
   background-color: #000000;
 }
-h2 {
+h4 {
   display: block;
   color: rgb(248, 196, 246);
   float: left;
   text-align: center;
-  padding: 14px 16px;
+  padding: 8px 12px;
 }
 ul {
     list-style-type: none;
@@ -30,6 +30,6 @@ ul {
     display: block;
     color: rgb(248, 196, 246);
     text-align: center;
-    padding: 14px 16px;
+    padding: 8px 12px;
     text-decoration: none;
   }
