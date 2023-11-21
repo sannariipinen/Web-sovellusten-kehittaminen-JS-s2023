@@ -8,10 +8,11 @@ header {
   align-items: baseline;
   background-color: #000000;
 }
-h3 {
-  display: inline-block;
+h2 {
+  display: block;
   color: rgb(248, 196, 246);
   float: left;
+  text-align: center;
 }
 ul {
     list-style-type: none;
