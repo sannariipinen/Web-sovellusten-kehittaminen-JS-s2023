@@ -1,3 +1,4 @@
+// Teatterivalikon näyttäminen
 function populateTheaters() {
     fetch('https://www.finnkino.fi/xml/TheatreAreas/')
         .then(response => response.text())
@@ -20,6 +21,7 @@ function populateTheaters() {
             document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
         });
 }
+// Elokuvien hakeminen ja näyttäminen
 function fetchMovies(theaterId) {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
@@ -47,6 +49,7 @@ function fetchMovies(theaterId) {
         })
         .catch(error => console.error('Virhe haettaessa elokuvia:', error));
 }
+// Näytösajat
 function displayMovieInfo(movieInfo, container, showTime) {
     const showTimeFormatted = new Date(showTime).toLocaleString('fi-FI', {
         day: '2-digit',
@@ -78,6 +81,7 @@ function displayMovieInfo(movieInfo, container, showTime) {
     const wishlistButton = movieElement.querySelector('.add-to-wishlist-button');
     wishlistButton.addEventListener('click', handleWishlistButtonClick);
 }
+// Elokuvien suodatus
 function filterMovies() {
     const searchValue = document.getElementById('search-input').value.toLowerCase();
     const movies = document.querySelectorAll('.movie');
@@ -90,11 +94,14 @@ function filterMovies() {
         }
     });
 }
+//Teatterivalikon alustus
 document.addEventListener('DOMContentLoaded', populateTheaters);
+//Teatterivalikon muutosten kuuntelija
 document.getElementById('theater-dropdown').addEventListener('change', function() {
     const theaterId = this.value;
     if (theaterId) {
         fetchMovies(theaterId);
     }
 });
+// Hakukentän syöte kuuntelija
 document.getElementById('search-input').addEventListener('input', filterMovies);
