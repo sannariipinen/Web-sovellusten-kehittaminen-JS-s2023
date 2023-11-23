@@ -6,6 +6,7 @@ header {
   width: 100%;
   align-items: baseline;
   background-color: #000000;
+  text-align: center;
 }
 h4 {
   display: block;
