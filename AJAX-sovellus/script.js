@@ -50,3 +50,43 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    var scheduleUrl = "https://www.finnkino.fi/xml/Schedule/?area=";
+    var xmlhttp = new XMLHttpRequest();
+    var data;
+
+    xmlhttp.open("GET", "https://www.finnkino.fi/xml/TheatreAreas/", true);
+    xmlhttp.send();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            data = xmlhttp.responseXML;
+            var theaterDropdown = document.getElementById("theater-dropdown");
+
+            theaterDropdown.addEventListener("change", function () {
+                var selectedTheaterId = theaterDropdown.value;
+                var scheduleApiUrl = scheduleUrl + selectedTheaterId;
+                
+                fetchScheduleData(scheduleApiUrl);
+            });
+        }
+    };
+
+    function fetchScheduleData(apiUrl) {
+        var scheduleXmlhttp = new XMLHttpRequest();
+        scheduleXmlhttp.open("GET", apiUrl, true);
+        scheduleXmlhttp.send();
+
+        scheduleXmlhttp.onreadystatechange = function () {
+            if (scheduleXmlhttp.readyState == 4 && scheduleXmlhttp.status == 200) {
+                var scheduleData = scheduleXmlhttp.responseXML;
+                displaySchedule(scheduleData);
+            }
+        };
+    }
+
+    function displaySchedule(scheduleData) {
+        // Customize this function to display the schedule data as needed
+        console.log(scheduleData);
+    }
+});
