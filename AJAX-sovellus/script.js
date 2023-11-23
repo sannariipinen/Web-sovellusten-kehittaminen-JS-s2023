@@ -18,7 +18,30 @@ function populateTheaters() {
     })
     .catch(error => {
         console.error('Virhe haettaessa teattereita:', error);
-        // Näytä käyttäjäystävällinen virheilmoitus
         document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
     });
+}
+function fetchMovies(theaterId) {
+    const today = new Date();
+    const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
+    const url = `https://www.finnkino.fi/xml/Schedule/?area=${theaterId}&dt=${formattedDate}`;
+    fetch(url)
+        .then(response => response.text())
+        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+        .then(data => {
+            const shows = data.querySelectorAll('Show');
+            const movies = [];
+            shows.forEach(show => {
+                const title = show.querySelector('Title').textContent;
+                const originalTitle = show.querySelector('OriginalTitle').textContent;
+                const showTime = show.querySelector('dttmShowStart').textContent;
+                movies.push({ title, originalTitle, showTime });
+            });
+            const moviesContainer = document.getElementById('movies-container');
+            moviesContainer.innerHTML = '';
+            movies.forEach(movie => {
+                fetchMovieInfo(movie.originalTitle, moviesContainer, movie.showTime);
+            });
+        })
+        .catch(error => console.error('Virhe haettaessa elokuvia:', error));
 }
