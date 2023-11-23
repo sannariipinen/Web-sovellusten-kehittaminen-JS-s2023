@@ -11,6 +11,7 @@ h4 {
   display: block;
   color: rgb(248, 196, 246);
   float: left;
+  text-align: center;
   padding: 8px 12px;
   margin: 0;
 }
