@@ -1,18 +1,24 @@
-var url= "https://www.finnkino.fi/xml/TheatreAreas/";
-var xmlhttp= new XMLHttpRequest();
-var data;
-xmlhttp.open("GET",url, true); 
-xmlhttp.send();
+function populateTheaters() {
+    fetch('https://www.finnkino.fi/xml/TheatreAreas/')
+    .then(response => response.text())
+    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
+    .then(data => {
+        const theaters = Array.from(data.querySelectorAll('TheatreArea'));
+        // Lajittele teatterit aakkosjärjestyksessä
+        theaters.sort((a, b) => a.querySelector('Name').textContent.localeCompare(b.querySelector('Name').textContent));
 
-xmlhttp.onreadystatechange=function() {
-    if (xmlhttp.onreadystatechange==4 && xmlhttp.status==200){
-        data= xmlhttp.responseXML;
-        let alue= data.querySelectorAll('title')
-        console.log( alue )
-        for (let i=0; i < alue.length; i++)
-        let alue = alue[i].childNodes[0].nodeValue + "<br>";
-
-        console.log(alue);
-        document.write(alue)
-    }
+        const dropdown = document.getElementById('theater-dropdown');
+        dropdown.innerHTML = '<option>Valitse teatteri</option>'; // Menun Oletusvalinta
+        theaters.forEach(theater => {
+            const option = document.createElement('option');
+            option.value = theater.querySelector('ID').textContent;
+            option.textContent = theater.querySelector('Name').textContent;
+            dropdown.appendChild(option);
+        });
+    })
+    .catch(error => {
+        console.error('Virhe haettaessa teattereita:', error);
+        // Näytä käyttäjäystävällinen virheilmoitus
+        document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
+    });
 }
