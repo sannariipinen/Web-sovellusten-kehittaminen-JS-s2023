@@ -105,3 +105,4 @@ document.getElementById('theater-dropdown').addEventListener('change', function(
 });
 // Hakukentän syöte kuuntelija
 document.getElementById('search-input').addEventListener('input', filterMovies);
+
