@@ -1,47 +1,52 @@
-function populateTheaters() {
-    fetch('https://www.finnkino.fi/xml/TheatreAreas/')
-    .then(response => response.text())
-    .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-    .then(data => {
-        const theaters = Array.from(data.querySelectorAll('TheatreArea'));
-        // Lajittele teatterit aakkosjärjestyksessä
-        theaters.sort((a, b) => a.querySelector('Name').textContent.localeCompare(b.querySelector('Name').textContent));
+document.addEventListener("DOMContentLoaded", function () {
+    var url = "https://www.finnkino.fi/xml/TheatreAreas/";
+    var xmlhttp = new XMLHttpRequest();
+    var data;
 
-        const dropdown = document.getElementById('theater-dropdown');
-        dropdown.innerHTML = '<option>Valitse teatteri</option>'; // Menun Oletusvalinta
-        theaters.forEach(theater => {
-            const option = document.createElement('option');
-            option.value = theater.querySelector('ID').textContent;
-            option.textContent = theater.querySelector('Name').textContent;
-            dropdown.appendChild(option);
-        });
-    })
-    .catch(error => {
-        console.error('Virhe haettaessa teattereita:', error);
-        document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
-    });
-}
-function fetchMovies(theaterId) {
-    const today = new Date();
-    const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
-    const url = `https://www.finnkino.fi/xml/Schedule/?area=${theaterId}&dt=${formattedDate}`;
-    fetch(url)
-        .then(response => response.text())
-        .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
-        .then(data => {
-            const shows = data.querySelectorAll('Show');
-            const movies = [];
-            shows.forEach(show => {
-                const title = show.querySelector('Title').textContent;
-                const originalTitle = show.querySelector('OriginalTitle').textContent;
-                const showTime = show.querySelector('dttmShowStart').textContent;
-                movies.push({ title, originalTitle, showTime });
+    xmlhttp.open("GET", url, true);
+    xmlhttp.send();
+
+    xmlhttp.onreadystatechange = function () {
+        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+            data = xmlhttp.responseXML;
+            var theaterDropdown = document.getElementById("theater-dropdown");
+
+            theaterDropdown.addEventListener("change", function () {
+                var selectedTheaterId = theaterDropdown.value;
+                var movies = getMoviesByTheater(data, selectedTheaterId);
+                displayMovies(movies);
             });
-            const moviesContainer = document.getElementById('movies-container');
-            moviesContainer.innerHTML = '';
-            movies.forEach(movie => {
-                fetchMovieInfo(movie.originalTitle, moviesContainer, movie.showTime);
-            });
-        })
-        .catch(error => console.error('Virhe haettaessa elokuvia:', error));
-}
+        }
+    };
+
+    function getMoviesByTheater(data, theaterId) {
+        var theaterElements = data.querySelectorAll('TheatreArea');
+        var movies = [];
+
+        for (var i = 0; i < theaterElements.length; i++) {
+            var id = theaterElements[i].getElementsByTagName("ID")[0].textContent;
+
+            if (id === theaterId) {
+                var titleElements = theaterElements[i].getElementsByTagName("Title");
+                for (var j = 0; j < titleElements.length; j++) {
+                    var title = titleElements[j].textContent;
+                    movies.push(title);
+                }
+                break; // Stop searching once the theater is found
+            }
+        }
+
+        return movies;
+    }
+
+    function displayMovies(movies) {
+        var movieList = document.getElementById("movie-list");
+        movieList.innerHTML = ""; // Clear previous content
+
+        for (var i = 0; i < movies.length; i++) {
+            var listItem = document.createElement("li");
+            listItem.textContent = movies[i];
+            movieList.appendChild(listItem);
+        }
+    }
+});
