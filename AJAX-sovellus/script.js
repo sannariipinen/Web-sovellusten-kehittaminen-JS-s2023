@@ -25,7 +25,7 @@ function populateTheaters() {
 function fetchMovies(theaterId) {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
-    const url = `https://www.finnkino.fi/xml/Schedule/`;
+    const url = `https://www.finnkino.fi/xml/Schedule/?area`;
 
     fetch(url)
         .then(response => response.text())
