@@ -6,13 +6,11 @@ header {
   width: 100%;
   align-items: baseline;
   background-color: #000000;
-  text-align: center;
 }
 h4 {
   display: block;
   color: rgb(248, 196, 246);
   float: left;
-  text-align: center;
   padding: 8px 12px;
 }
 ul {
