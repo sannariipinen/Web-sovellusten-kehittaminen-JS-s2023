@@ -14,7 +14,7 @@ function haeTeatterit() {
                     <option value="${teatteriId}">${teatteriNimi}</option>
                 `;
                 
-                document.getElementById('theater-dropdown').innerHTML += html;
+                document.querySelector('HaeTeatterit').innerHTML += html
             }
 
             // Voit kutsua tässä haeElokuvat()-funktiota tai muuta tarvittavaa
