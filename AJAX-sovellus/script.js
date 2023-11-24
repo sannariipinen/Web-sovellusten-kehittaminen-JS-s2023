@@ -28,13 +28,13 @@ function haeTeatterit() {
 // Kutsu haeTeatterit()-funktiota tarpeen mukaan
 haeTeatterit();
 
-function haeElokuvat() {
-    fetch('https://www.finnkino.fi/xml/Schedule/?area=1031&dt=24.11.2023')
+function haeElokuvat(areaID, date) {
+    fetch(`https://www.finnkino.fi/xml/Schedule/`)
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
         .then(data => {
-            const elokuvat = (data.querySelectorAll('Show'));
+            const elokuvat = data.querySelectorAll('Show');
             
         console.log (elokuvat)
             for (let i= 0; i<elokuvat.length; i++){
