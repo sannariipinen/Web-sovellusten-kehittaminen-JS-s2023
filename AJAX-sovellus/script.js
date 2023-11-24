@@ -14,7 +14,7 @@ function haeTeatterit() {
                     <option value="${teatteriId}">${teatteriNimi}</option>
                 `;
                 
-                document.querySelector('.haeTeatterit').innerHTML += html
+                document.querySelector('haeTeatterit').innerHTML += html
             }
 
             // Voit kutsua tässä haeElokuvat()-funktiota tai muuta tarvittavaa
@@ -25,8 +25,8 @@ function haeTeatterit() {
 // Kutsu haeTeatterit()-funktiota tarpeen mukaan
 haeTeatterit();
 
-function haeElokuvat(areaID, date) {
-    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${areaID}&dt=${date}`)
+function haeElokuvat(areaID) {
+    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${areaID}`)
 
 
         .then(response => response.text())
