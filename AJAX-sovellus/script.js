@@ -19,10 +19,7 @@ function haeTeatterit() {
 
             // Voit kutsua tässä haeElokuvat()-funktiota tai muuta tarvittavaa
         })
-        .catch(error => {
-            console.error('Virhe haettaessa teattereita:', error);
-            document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
-        });
+        
 }
 
 // Kutsu haeTeatterit()-funktiota tarpeen mukaan
@@ -55,9 +52,6 @@ function haeElokuvat(areaID, date) {
             document.querySelector('#laatikko').innerHTML+= html
             }
         })
-        .catch(error => {
-            console.error('Virhe haettaessa teattereita:', error);
-            document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
-        });
+       
     }
 
