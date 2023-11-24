@@ -19,13 +19,13 @@
 </head>
 <body>
     <section>
-        <select id= "haeTeatterit()">
+        <select id= "teatteriDropdown">
             <option>Valitse teatteri</option>
         </select>
     </section>
 
  <section>
-        <select onchange= "haeElokuvat()">
+        <select onchange= "haeElokuvat(this.value, '2023-11-24')">
             <option>Valitse elokuva</option>
         </select>
     </section>

@@ -14,7 +14,7 @@ function haeTeatterit() {
                     <option value="${teatteriId}">${teatteriNimi}</option>
                 `;
                 
-                document.querySelector('#HaeTeatterit').innerHTML += html
+                document.querySelector('#teatteritDropdown').innerHTML += html
             }
 
             // Voit kutsua tässä haeElokuvat()-funktiota tai muuta tarvittavaa
@@ -26,7 +26,8 @@ function haeTeatterit() {
 haeTeatterit();
 
 function haeElokuvat(areaID, date) {
-    fetch(`https://www.finnkino.fi/xml/Schedule/`)
+    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${areaID}&dt=${date}`)
+
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
