@@ -1,6 +1,6 @@
 function haeElokuvat() {
     fetch('https://www.finnkino.fi/xml/Schedule/?area=1031&dt=24.11.2023')
-
+    
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
         .then(data => {
