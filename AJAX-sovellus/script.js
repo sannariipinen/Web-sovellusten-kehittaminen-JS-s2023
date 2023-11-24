@@ -1,32 +1,5 @@
-function haeTeatterit() {
-    fetch('https://www.finnkino.fi/xml/TheatreAreas/')
-        .then(response => response.text())
-        .then(str => new DOMParser().parseFromString(str, "text/xml"))
-        .then(data => {
-            const teatterit = data.querySelectorAll('TheatreArea');
-
-            for (let i = 0; i < teatterit.length; i++) {
-                let teatteri = teatterit[i];
-                let teatteriNimi = teatteri.getElementsByTagName('Name')[0].innerHTML;
-                let teatteriId = teatteri.getElementsByTagName('ID')[0].innerHTML;
-
-                let html = `
-                    <option value="${teatteriId}">${teatteriNimi}</option>
-                `;
-                
-                document.querySelector('#haeTeatterit').innerHTML += html
-            }
-
-            // Voit kutsua tässä haeElokuvat()-funktiota tai muuta tarvittavaa
-        })
-        
-}
-
-// Kutsu haeTeatterit()-funktiota tarpeen mukaan
-haeTeatterit();
-
-function haeElokuvat(areaID) {
-    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${areaID}`)
+function haeElokuvat() {
+    fetch(`https://www.finnkino.fi/xml/Schedule/`)
 
 
         .then(response => response.text())
