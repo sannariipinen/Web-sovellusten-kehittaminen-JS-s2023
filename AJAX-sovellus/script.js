@@ -2,6 +2,9 @@ function updateMovies(selectedTheater) {
     // You can use the selectedTheater value to make specific API requests
     // For now, let's just log the selected theater for testing
     console.log("Selected Theater: ", selectedTheater);
+
+    // Call the function to fetch and display movies based on the selected theater
+    haeElokuvat(selectedTheater, '2023-11-24');
 }
 
 function haeElokuvat(selectedMovie, date) {
