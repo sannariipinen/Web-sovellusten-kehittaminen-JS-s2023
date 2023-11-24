@@ -20,7 +20,7 @@ function populateTheaters() {
             console.error('Virhe haettaessa teattereita:', error);
             document.getElementById('theater-dropdown').innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
         });
-}
+    }
 //Teatterivalikon alustus
 document.addEventListener('DOMContentLoaded', populateTheaters);
 //Teatterivalikon muutosten kuuntelija
