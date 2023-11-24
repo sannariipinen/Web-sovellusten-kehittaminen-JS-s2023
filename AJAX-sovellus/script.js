@@ -22,7 +22,18 @@ function populateTheaters() {
             theaterDropdown.innerHTML = '<option>Teattereiden lataus epäonnistui</option>';
         });
 }
+function fetchMovieInfo(title, container, showTime) {
+    const url = `https://www.omdbapi.com/?t=${encodeURIComponent(title)}&language=fi&apikey=${omdbApiKey}`;
 
+    fetch(url)
+        .then(response => response.json())
+        .then(movieInfo => {
+            if (movieInfo.Response === 'True') {
+                displayMovieInfo(movieInfo, container, showTime);
+            }
+        })
+        .catch(error => console.error('Error fetching movie info:', error));
+}
 function fetchMovies(theaterId) {
     const today = new Date();
     const formattedDate = `${today.getFullYear()}-${(today.getMonth() + 1).toString().padStart(2, '0')}-${today.getDate().toString().padStart(2, '0')}`;
