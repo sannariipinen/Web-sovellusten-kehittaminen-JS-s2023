@@ -25,13 +25,19 @@ function haeElokuvat(selectedMovie, date) {
             console.log(Title)
             console.log(Genres)
             console.log(EventSmallImagePortrait)
+
+            let elokuvaContainer = document.createElement('div');
+            elokuvaContainer.classList.add('elokuva-container');
             let html= `
+            <img src= "${EventSmallImagePortrait}" alt="${Title}">
+            <div class="elokuva-tiedot">
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
-            <img src= "${EventSmallImagePortrait}">  `
+            </div>`
             console.log(html)
             ; 
-            document.querySelector('#laatikko').innerHTML+= html
+            elokuvaContainer.innerHTML = html;
+            document.querySelector('#laatikko').appendChild(elokuvaContainer);
             }
         })
        
