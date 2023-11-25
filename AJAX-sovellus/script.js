@@ -4,9 +4,10 @@ function updateMovies(selectedTheater) {
 
     
     haeElokuvat(selectedTheater, '2023-11-24');
+
 }
 
-function haeElokuvat(selectedMovie, date) {
+function haeElokuvat(selectedMovie, selectedDate) {
     fetch(`https://www.finnkino.fi/xml/Schedule/`)
 
         .then(response => response.text())
