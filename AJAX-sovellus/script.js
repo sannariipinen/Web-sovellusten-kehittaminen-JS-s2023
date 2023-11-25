@@ -2,13 +2,15 @@ function updateMovies(selectedTheater) {
    
     console.log("Selected Theater: ", selectedTheater);
 
+
     
-    haeElokuvat(selectedTheater, '2023-11-24');
+    haeElokuvat("selectedTheater", '2023-11-24');
 
 }
 
-function haeElokuvat(selectedMovie, selectedDate) {
+function haeElokuvat(selectedMovie) {
     fetch(`https://www.finnkino.fi/xml/Schedule/`)
+    
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
