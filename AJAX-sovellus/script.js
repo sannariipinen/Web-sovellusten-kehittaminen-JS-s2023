@@ -2,8 +2,6 @@ function updateMovies(selectedTheater) {
    
     console.log("Selected Theater: ", selectedTheater);
 
-
-    
     haeElokuvat("selectedTheater", '2023-11-24');
 
 }
