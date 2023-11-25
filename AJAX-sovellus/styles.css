@@ -1,12 +1,14 @@
 body {
   background-color: rgb(248, 196, 246);
 }
+
 header {
   display: flex;
   width: 100%;
   align-items: baseline;
   background-color: #000000;
 }
+
 h4 {
   display: block;
   color: rgb(248, 196, 246);
@@ -16,24 +18,25 @@ h4 {
   margin: 0;
   margin-bottom: auto;
 }
+
 ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #000000;
-  }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #000000;
+}
   
-  li {
-    float: left;
-    display: inline-block;
-    margin-right: 15px;
-  }
+li {
+  float: left;
+  display: inline-block;
+  margin-right: 15px;
+}
   
-  li a {
-    display: inline-block;
-    color: rgb(248, 196, 246);
-    text-align: center;
-    padding: 8px 12px;
-    text-decoration: none;
-  }
+li a {
+  display: inline-block;
+  color: rgb(248, 196, 246);
+  text-align: center;
+  padding: 8px 12px;
+  text-decoration: none;
+}
