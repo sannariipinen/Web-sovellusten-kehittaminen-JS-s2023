@@ -40,5 +40,5 @@ function haeElokuvat(selectedMovie) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             }
         })
-       
+        
     }
