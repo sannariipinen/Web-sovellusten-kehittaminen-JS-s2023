@@ -36,6 +36,7 @@ function haeElokuvat(selectedMovie) {
             </div>`
             console.log(html)
             ; 
+    
             elokuvaContainer.innerHTML = html;
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             }
