@@ -77,3 +77,24 @@ li a {
   margin: 5px 0;
 }
 
+.title-container {
+  display: flex;
+  align-items: center;
+}
+
+.wishlist-button {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.wishlist-button {
+  font-size: 24px;
+  color: azure;
+
+}
+
+.wishlist-button.active .heart {
+  background-color: rgb(250, 127, 217); /* Change the color to your desired filled heart color */
+}
