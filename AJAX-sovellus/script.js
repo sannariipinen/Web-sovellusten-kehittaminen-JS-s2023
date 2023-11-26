@@ -41,4 +41,4 @@ function haeElokuvat(selectedMovie) {
             }
         })
         
-    }
+}
