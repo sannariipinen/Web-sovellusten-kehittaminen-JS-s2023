@@ -7,7 +7,7 @@ header {
   width: 100%;
   align-items: baseline;
   background-color: #000000;
-  padding: 10px 20px;
+  padding: 8px 12px;
   box-sizing: border-box;
 }
 
@@ -28,7 +28,6 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #000000;
-  height: 60px;
 }
   
 li {
