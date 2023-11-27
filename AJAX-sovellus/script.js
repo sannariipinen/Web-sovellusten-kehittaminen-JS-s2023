@@ -1,5 +1,6 @@
-function updateMovies(selectedTheater) {
+function updateMovies(selectedTheater, selectedDate) {
     console.log("Selected Theater: ", selectedTheater);
+    console.log("Selected Date:", selectedDate);
     haeElokuvat(selectedTheater, 'selectedDate');
 
 }

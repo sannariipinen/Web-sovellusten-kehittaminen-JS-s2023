@@ -19,7 +19,7 @@
 </head>
 <body>
     <section>
-        <select onchange="updateMovies(this.value)">
+        <select onchange="updateMovies(this.value, document.getElementById('dates').value)">
             <option>Valitse teatteri</option>
             <option value="1012">Espoo</option>
             <option value="1039">Espoo: OMENA</option>
@@ -48,7 +48,7 @@
     </section>
 
    
-    <input type="date" id="dates" onchange="updateMovies(document.getElementById('theater').value)">
+    <input type="date" id="dates" onchange="updateMovies(document.getElementById('theater').value, this.value)">
 
 
     <div id="laatikko"></div>
