@@ -5,13 +5,6 @@ function updateMovies(selectedTheater) {
 
 }
 
-function toggleWishlistButton() {
-    const wishlistButton= document.getElementById('wishlistButton');
-    const heartIcon= wishlistButton.querySelector('i');
-    wishlistButton.classList.toggle('active');
-    heartIcon.classList.toggle('fas');
-    heartIcon.classList.toggle('far');
-}
 
 function haeElokuvat(selectedMovie) {
     fetch(`https://www.finnkino.fi/xml/Schedule/`)
