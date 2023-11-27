@@ -42,8 +42,8 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <div class="elokuva-tiedot">
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
-            <h3>${formattedDateTime}</h3>
-            <h5>${Name}</h5>
+            <h2>${formattedDateTime}</h2>
+            <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
         
             </div>`
