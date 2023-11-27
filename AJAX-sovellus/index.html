@@ -19,7 +19,9 @@
 </head>
 <body>
     <section>
-        <select onchange="updateMovies(this.value, document.getElementById('dates').value)">
+        
+        <select id="theater" onchange="updateMovies(this.value, document.getElementById('dates').value)">
+
             <option>Valitse teatteri</option>
             <option value="1012">Espoo</option>
             <option value="1039">Espoo: OMENA</option>
