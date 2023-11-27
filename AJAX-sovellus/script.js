@@ -1,19 +1,20 @@
 function updateMovies(selectedTheater) {
     console.log("Selected Theater: ", selectedTheater);
-    haeElokuvat("selectedTheater", '2023-11-24');
+    haeElokuvat(selectedTheater, 'selectedDate');
 
 }
 
 
-function haeElokuvat(selectedMovie) {
-    fetch(`https://www.finnkino.fi/xml/Schedule/`)
-
-    
+function haeElokuvat(selectedTheater, selectedDate) {
+    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${selectedDate}`)
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
         .then(data => {
             const elokuvat = data.querySelectorAll('Show');
+
+            const movieScheduleDiv= document.getElementById('laatikko');
+            movieScheduleDiv.innerHTML= '';
             
         console.log (elokuvat)
             for (let i= 0; i<elokuvat.length; i++){
@@ -39,7 +40,10 @@ function haeElokuvat(selectedMovie) {
     
             elokuvaContainer.innerHTML = html;
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
+            movieScheduleDiv.appendChild(elokuvaContainer);
             }
+
+
         })
         
 }
