@@ -1,4 +1,3 @@
-
 function updateMovies(selectedTheater) {
     console.log("Selected Theater: ", selectedTheater);
     haeElokuvat(selectedTheater, 'selectedDate');
@@ -24,9 +23,18 @@ function haeElokuvat(selectedTheater, selectedDate) {
             let Title= show.getElementsByTagName('Title')[0].innerHTML
             let Genres= show.getElementsByTagName('Genres') [0].innerHTML
             let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML
+            let Name= show.getElementsByTagName ('Name') [0].innerHTML
+            let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML
+
+            let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
+            let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
+
             console.log(Title)
             console.log(Genres)
+            console.log(formattedDateTime)
             console.log(EventSmallImagePortrait)
+            console.log(Name)
+            console.log(RatingImageUrl)
 
             let elokuvaContainer = document.createElement('div');
             elokuvaContainer.classList.add('elokuva-container');
@@ -35,6 +43,10 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <div class="elokuva-tiedot">
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
+            <h3>${formattedDateTime}</h3>
+            <p>${Name}</p>
+            <img src= "${RatingImageUrl}" alt="${Genres}">
+        
             </div>`
             console.log(html)
             ; 
