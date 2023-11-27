@@ -83,16 +83,3 @@ li a {
   display: flex;
   align-items: center;
 }
-
-.heart-icon {
-  fill: transparent;
-  stroke: black;
-  stroke-width: 30;
-  transition: all 0.5s;
-}
-
-.heart-icon.active {
-  animation: like 0.5s 1;
-  fill: red;
-  stroke: none;
-}
