@@ -34,6 +34,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <div class="elokuva-tiedot">
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
+            <ion-icon name="heart" class="heart-icon"></ion-icon>
             </div>`
             console.log(html)
             ; 
@@ -42,7 +43,11 @@ function haeElokuvat(selectedTheater, selectedDate) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
-
+            document.querySelectorAll('.heart-icon').forEach(icon => {
+                icon.onclick = function () {
+                  icon.classList.toggle('active');
+                };
+              });
 
         })
         
