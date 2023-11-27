@@ -4,7 +4,6 @@ function updateMovies(selectedTheater) {
 
 }
 
-
 function haeElokuvat(selectedTheater, selectedDate) {
     fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${selectedDate}`)
 
@@ -55,7 +54,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
-
 
         })
         
