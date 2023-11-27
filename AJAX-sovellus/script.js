@@ -43,7 +43,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
             <h3>${formattedDateTime}</h3>
-            <p>${Name}</p>
+            <h5>${Name}</h5>
             <img src= "${RatingImageUrl}" alt="${Genres}">
         
             </div>`
