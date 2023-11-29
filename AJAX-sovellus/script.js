@@ -8,12 +8,15 @@ function updateMovies(selectedTheater, selectedDate) {
     .then(response => response.text())
     .then(str => new DOMParser().parseFromString(str, "text/xml"))
     .then(data => {
-    const scheduleDates = data.querySelectorAll('ScheduleDate');
+    const selectedDate = data.querySelectorAll('selectedDate');
 
-        scheduleDates.forEach(scheduleDate => {
-            const date = scheduleDate.innerHTML;
+        selectedDate.forEach(selectedDate => {
+            const date = selectedDate.innerHTML;
             // Do something with the date, such as displaying it on the web page
             console.log(date);
+            for (let i= 0; i<date.length; i++){
+                let show= date[i]
+            }
     });
 });
 
@@ -43,7 +46,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML
             let Name= show.getElementsByTagName ('Name') [0].innerHTML
             let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML
-
             let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
             let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
 
@@ -64,7 +66,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
-            <i class="wishlist-heart" data-title="${Title}" onclick="toggleWishlist(this)">&#10084;</i>
         
             </div>`
             console.log(html)
@@ -74,40 +75,11 @@ function haeElokuvat(selectedTheater, selectedDate) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
-            let movieElements = document.querySelectorAll('.elokuva-container');
 
-            function toggleWishlist(heartIcon) {
-                const title = heartIcon.getAttribute('data-title');
-                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-              
-                if (wishlist[title]) {
-                  delete wishlist[title];
-                } else {
-                  wishlist[title] = true;
-                }
-              
-                localStorage.setItem('wishlist', JSON.stringify(wishlist));
-                updateHeartColor(heartIcon, wishlist[title]);
-              }
-              
-              function updateHeartColor(heartIcon, isInWishlist) {
-                if (isInWishlist) {
-                  heartIcon.classList.add('wishlist');
-                } else {
-                  heartIcon.classList.remove('wishlist');
-                }
-              }
-              
-              // On page load, check and update the wishlist status for each movie
-              document.addEventListener('DOMContentLoaded', function () {
-                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-                const heartIcons = document.querySelectorAll('.wishlist-heart');
-              
-                heartIcons.forEach((heartIcon) => {
-                  const title = heartIcon.getAttribute('data-title');
-                  updateHeartColor(heartIcon, wishlist[title]);
-                });
-              });
-            })
-        }
-    };
+
+        })
+        
+}
+
+}
+
