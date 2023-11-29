@@ -82,15 +82,20 @@ function haeElokuvat(selectedTheater, selectedDate) {
               
                 if (wishlist[title]) {
                   delete wishlist[title];
-                  // Remove the 'wishlist' class to change the heart color back to default
-                  heartIcon.classList.remove('wishlist');
                 } else {
                   wishlist[title] = true;
-                  // Add the 'wishlist' class to change the heart color to indicate it's in the wishlist
-                  heartIcon.classList.add('wishlist');
                 }
               
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
+                updateHeartColor(heartIcon, wishlist[title]);
+              }
+              
+              function updateHeartColor(heartIcon, isInWishlist) {
+                if (isInWishlist) {
+                  heartIcon.classList.add('wishlist');
+                } else {
+                  heartIcon.classList.remove('wishlist');
+                }
               }
               
               // On page load, check and update the wishlist status for each movie
@@ -100,14 +105,9 @@ function haeElokuvat(selectedTheater, selectedDate) {
               
                 heartIcons.forEach((heartIcon) => {
                   const title = heartIcon.getAttribute('data-title');
-                  if (wishlist[title]) {
-                    heartIcon.classList.add('wishlist');
-                  }
+                  updateHeartColor(heartIcon, wishlist[title]);
                 });
               });
-        })
-        
-}
-
-}
-
+            })
+        }
+    };
