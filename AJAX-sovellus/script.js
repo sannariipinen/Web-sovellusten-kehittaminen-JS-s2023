@@ -66,7 +66,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
-            <i class="wishlist-heart" data-title="${Title}" onclick="toggleWishlist(this)">&#10084;</i>
         
             </div>`
             console.log(html)
