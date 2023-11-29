@@ -69,6 +69,25 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   updateButtonColor(button, wishlist[title]);
+
+  // Show a notification
+  showNotification(title, wishlist[title]);
+}
+
+function showNotification(movieTitle, isInWishlist) {
+  const notificationMessage = isInWishlist
+      ? `${movieTitle} has been added to your wishlist!`
+      : `${movieTitle} has been removed from your wishlist.`;
+
+  if (Notification.permission === 'granted') {
+      new Notification(notificationMessage);
+  } else if (Notification.permission !== 'denied') {
+      Notification.requestPermission().then((permission) => {
+          if (permission === 'granted') {
+              new Notification(notificationMessage);
+          }
+      });
+  }
 }
 
 function updateButtonColor(button, isInWishlist) {
@@ -125,7 +144,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
-            <button class="wishlist-button" data-title="${Title}">&#10084; Add to Wishlist</button>
+            <button class="wishlist-button" data-title="${Title}">&#10084; Lisää toivelistalle </button>
         
             </div>`
             console.log(html)
