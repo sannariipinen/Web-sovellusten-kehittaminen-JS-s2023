@@ -82,16 +82,29 @@ function haeElokuvat(selectedTheater, selectedDate) {
               
                 if (wishlist[title]) {
                   delete wishlist[title];
+                  // Remove the 'wishlist' class to change the heart color back to default
+                  heartIcon.classList.remove('wishlist');
                 } else {
                   wishlist[title] = true;
+                  // Add the 'wishlist' class to change the heart color to indicate it's in the wishlist
+                  heartIcon.classList.add('wishlist');
                 }
               
                 localStorage.setItem('wishlist', JSON.stringify(wishlist));
-              
-                // You can add more visual feedback here, like changing the color of the heart icon
-                // or updating the UI to reflect the wishlist status.
               }
-
+              
+              // On page load, check and update the wishlist status for each movie
+              document.addEventListener('DOMContentLoaded', function () {
+                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+                const heartIcons = document.querySelectorAll('.wishlist-heart');
+              
+                heartIcons.forEach((heartIcon) => {
+                  const title = heartIcon.getAttribute('data-title');
+                  if (wishlist[title]) {
+                    heartIcon.classList.add('wishlist');
+                  }
+                });
+              });
         })
         
 }
