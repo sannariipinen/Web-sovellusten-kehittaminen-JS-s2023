@@ -64,6 +64,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
+            <i class="wishlist-heart" data-title="${Title}" onclick="toggleWishlist(this)">&#10084;</i>
         
             </div>`
             console.log(html)
@@ -75,17 +76,21 @@ function haeElokuvat(selectedTheater, selectedDate) {
             }
             let movieElements = document.querySelectorAll('.elokuva-container');
 
-        movieElements.forEach((movieElement) => {
-            let wishlistButton = document.createElement('i');
-            wishlistButton.classList.add('fas', 'fa-heart', 'wishlist');
-            movieElement.appendChild(wishlistButton);
-
-            wishlistButton.addEventListener('click', () => {
-            wishlistButton.classList.toggle('active');
-            // Add/remove the movie to/from the wishlist
-            // You can store the wishlist in an array or any other data structure
-              });
-            });
+            function toggleWishlist(heartIcon) {
+                const title = heartIcon.getAttribute('data-title');
+                const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+              
+                if (wishlist[title]) {
+                  delete wishlist[title];
+                } else {
+                  wishlist[title] = true;
+                }
+              
+                localStorage.setItem('wishlist', JSON.stringify(wishlist));
+              
+                // You can add more visual feedback here, like changing the color of the heart icon
+                // or updating the UI to reflect the wishlist status.
+              }
 
         })
         
