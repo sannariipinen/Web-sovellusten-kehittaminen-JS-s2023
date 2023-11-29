@@ -9,7 +9,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Date:", selectedDate);
 
     const formattedDate = new Date(selectedDate).toISOString();
-
+    const fullDate = `${selectedDate}T00:00:00`;
     fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${new Date(selectedDate).toISOString()}`)
 
         .then(response => response.text())
