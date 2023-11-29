@@ -66,6 +66,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
+            <i class="wishlist-heart" data-title="${Title}" onclick="toggleWishlist(this)">&#10084;</i>
         
             </div>`
             console.log(html)
@@ -75,10 +76,39 @@ function haeElokuvat(selectedTheater, selectedDate) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
-
-
-        })
-        
-}
-
-}
+            function toggleWishlist(heartIcon) {
+              const title = heartIcon.getAttribute('data-title');
+              const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+            
+              if (wishlist[title]) {
+                delete wishlist[title];
+              } else {
+                wishlist[title] = true;
+              }
+            
+              localStorage.setItem('wishlist', JSON.stringify(wishlist));
+              updateHeartColor(heartIcon, wishlist[title]);
+            }
+            
+            function updateHeartColor(heartIcon, isInWishlist) {
+              if (isInWishlist) {
+                heartIcon.classList.add('wishlist');
+              } else {
+                heartIcon.classList.remove('wishlist');
+              }
+            }
+            
+            // On page load, check and update the wishlist status for each movie
+            document.addEventListener('DOMContentLoaded', function () {
+              let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+          
+              const heartIcons = document.querySelectorAll('.wishlist-heart');
+          
+              heartIcons.forEach((heartIcon) => {
+                  const title = heartIcon.getAttribute('data-title');
+                  updateHeartColor(heartIcon, wishlist[title]);
+              });
+          });
+          })
+      }
+  };
