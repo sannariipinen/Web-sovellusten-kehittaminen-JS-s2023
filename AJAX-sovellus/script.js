@@ -69,36 +69,7 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   updateButtonColor(button, wishlist[title]);
-
-  // Show a notification
-  showNotification(title, wishlist[title]);
-}
-
-function showNotification(movieTitle, isInWishlist) {
-  const notificationMessage = isInWishlist
-      ? `${movieTitle} has been added to your wishlist!`
-      : `${movieTitle} has been removed from your wishlist.`;
-
-  // Check if the browser supports the Notification API
-  if (!('Notification' in window)) {
-      console.error('This browser does not support notifications.');
-      return;
-  }
-
-  // Request permission if needed
-  if (Notification.permission !== 'granted') {
-      Notification.requestPermission().then((permission) => {
-          if (permission === 'granted') {
-              new Notification(notificationMessage);
-          } else {
-              console.warn('Notification permission denied.');
-          }
-      });
-  } else {
-      // Permission already granted
-      new Notification(notificationMessage);
-  }
-}
+};
 
 function updateButtonColor(button, isInWishlist) {
   if (isInWishlist) {
