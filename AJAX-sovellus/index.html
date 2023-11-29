@@ -10,7 +10,7 @@
 <body>
     <header id="header">
         <img src="./kuvat/logo.png" alt="Logo" width="38" height="33" class="d-inline-block align-text-top">
-        <h4> MEIDÄN FINNKINO API </h4>
+        <h4>MEIDÄN FINNKINO API</h4>
     </header>
 
     <section>
@@ -42,8 +42,34 @@
         </select>
     </section>
 
-    <input type="date" id="dates" onchange="updateMovies(document.getElementById('theater').value, this.value)">
-    
+    <section>
+        <select id="dateDropdown" onchange="updateMovies(document.getElementById('theaterDropdown').value, this.value)">
+            <option>Valitse päivämäärä</option>
+            <option value="2023-11-29T00:00:00">2023-11-29</option>
+            <option value="2023-11-30T00:00:00">2023-11-30</option>
+            <option value="2023-12-01T00:00:00">2023-12-01</option>
+            <option value="2023-12-02T00:00:00">2023-12-02</option>
+            <option value="2023-12-03T00:00:00">2023-12-03</option>
+            <option value="2023-12-04T00:00:00">2023-12-04</option>
+            <option value="2023-12-05T00:00:00">2023-12-05</option>
+            <option value="2023-12-06T00:00:00">2023-12-06</option>
+            <option value="2023-12-07T00:00:00">2023-12-07</option>
+            <option value="2023-12-09T00:00:00">2023-12-09</option>
+            <option value="2023-12-10T00:00:00">2023-12-10</option>
+            <option value="2023-12-11T00:00:00">2023-12-11</option>
+            <option value="2023-12-12T00:00:00">2023-12-12</option>
+            <option value="2023-12-13T00:00:00">2023-12-13</option>
+            <option value="2023-12-14T00:00:00">2023-12-14</option>
+            <option value="2023-12-16T00:00:00">2023-12-16</option>
+            <option value="2023-12-17T00:00:00">2023-12-17</option>
+            <option value="2023-12-18T00:00:00">2023-12-18</option>
+            <option value="2023-12-19T00:00:00">2023-12-19</option>
+            <option value="2023-12-20T00:00:00">2023-12-20</option>
+            <option value="2023-12-21T00:00:00">2023-12-21</option>
+            <option value="2023-12-28T00:00:00">2023-12-28</option>
+            <option value="2023-12-31T00:00:00">2023-12-31</option>
+        </select>
+    </section>
    
 
     <div id="laatikko"></div>
@@ -53,6 +79,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script src="testi.js"></script>
 </body>
 </html>
