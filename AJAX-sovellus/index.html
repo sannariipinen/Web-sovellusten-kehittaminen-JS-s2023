@@ -10,7 +10,7 @@
 <body>
     <header id="header">
         <img src="./kuvat/logo.png" alt="Logo" width="38" height="33" class="d-inline-block align-text-top">
-        <h4></h4>
+        <h4> MEIDÄN FINNKINO API </h4>
     </header>
 
     <section>
@@ -42,7 +42,8 @@
         </select>
     </section>
 
-    <input type="date" id="dates" onchange="updateMovies()">
+    <input type="date" id="dates" onchange="updateMovies(document.getElementById('theater').value, this.value)">
+    
    
 
     <div id="laatikko"></div>
@@ -52,5 +53,6 @@
     </div>
 
     <script src="script.js"></script>
+    <script src="testi.js"></script>
 </body>
 </html>

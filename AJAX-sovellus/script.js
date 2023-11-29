@@ -3,27 +3,7 @@ function updateMovies(selectedTheater, selectedDate) {
     console.log("Selected Date:", selectedDate);
     haeElokuvat(selectedTheater, 'selectedDate');
 
-     // Fetch data from the second XML link
-    fetch(`https://www.finnkino.fi/xml/ScheduleDates/`)
-    .then(response => response.text())
-    .then(str => new DOMParser().parseFromString(str, "text/xml"))
-    .then(data => {
-    const selectedDate = data.querySelectorAll('selectedDate');
-
-        selectedDate.forEach(selectedDate => {
-            const date = selectedDate.innerHTML;
-            // Do something with the date, such as displaying it on the web page
-            console.log(date);
-            for (let i= 0; i<date.length; i++){
-                let show= date[i]
-            }
-    });
-});
-
-
-
-
-
+}
 
 
 function haeElokuvat(selectedTheater, selectedDate) {
@@ -110,4 +90,3 @@ function haeElokuvat(selectedTheater, selectedDate) {
           });
           })
       }
-  };
