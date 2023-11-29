@@ -1,10 +1,12 @@
 function updateMovies(selectedTheater, selectedDate) {
-    console.log("Selected Theater: ", selectedTheater);
-    console.log("Selected Date:", selectedDate);
+    console.log("Update Movies - Theater: ", selectedTheater);
+    console.log("Update Movies - Date:", selectedDate);
     haeElokuvat(selectedTheater, 'selectedDate');
 
 
 function haeElokuvat(selectedTheater, selectedDate) {
+    console.log("Hae Elokuvat - Theater: ", selectedTheater);
+    console.log("Hae Elokuvat - Date:", selectedDate);
     fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${selectedDate}`)
 
         .then(response => response.text())
