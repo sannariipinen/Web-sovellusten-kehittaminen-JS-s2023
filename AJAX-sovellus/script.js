@@ -14,8 +14,8 @@ function haeElokuvat(selectedTheater, selectedDate) {
         .then(data => {
           console.log('API Response:', data);
           const selectedDateShows = Array.from(data.querySelectorAll('Show')).filter(show => {
-            const showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
-            return showTime.toISOString().split('T')[0] === selectedDate.split('T')[0];
+            const showDate = show.querySelector('dttmShowStart').innerHTML.split('T')[0];
+            return showDate === selectedDate.split('T')[0];
           });
             const movieScheduleDiv= document.getElementById('laatikko');
             movieScheduleDiv.innerHTML= '';
