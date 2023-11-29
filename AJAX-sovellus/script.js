@@ -7,7 +7,7 @@ function updateMovies(selectedTheater, selectedDate) {
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
     console.log("Hae Elokuvat - Date:", selectedDate);
-    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${selectedDate}`)
+    fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${new Date(selectedDate).toISOString()}`)
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
