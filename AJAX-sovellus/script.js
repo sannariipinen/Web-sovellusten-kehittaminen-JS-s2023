@@ -38,6 +38,19 @@ function updateMovies(selectedTheater, selectedDate) {
   console.log("After Default - Update Movies - Date:", selectedDate);
   haeElokuvat(selectedTheater, selectedDate);
 }
+document.addEventListener('DOMContentLoaded', function () {
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+  const heartIcons = document.querySelectorAll('.wishlist-heart');
+
+  heartIcons.forEach((heartIcon) => {
+      heartIcon.addEventListener('click', function () {
+          toggleWishlist(this);
+      });
+
+      const title = heartIcon.getAttribute('data-title');
+      updateHeartColor(heartIcon, wishlist[title]);
+  })
+});
 
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
