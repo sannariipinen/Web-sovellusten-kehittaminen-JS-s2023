@@ -82,4 +82,3 @@ function haeElokuvat(selectedTheater, selectedDate) {
 }
 
 }
-

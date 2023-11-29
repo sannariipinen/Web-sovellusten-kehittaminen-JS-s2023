@@ -6,16 +6,15 @@
     <link rel="stylesheet" href="./styles.css">
     <link rel="icon" type="image/x-icon" href="./kuvat/logo.png">
     <title>AJAX Sovellus</title>
-    <header>
-        <img src="./kuvat/logo.png" alt="Logo" width="38" height="33" class="d-inline-block align-text-top">
-        <h4></h4>
-    </header> 
 </head>
 <body>
-    <section>
-        
-        <select id="theater" onchange="updateMovies(this.value, document.getElementById('dates').value)">
+    <header id="header">
+        <img src="./kuvat/logo.png" alt="Logo" width="38" height="33" class="d-inline-block align-text-top">
+        <h4></h4>
+    </header>
 
+    <section>
+        <select id="theater" onchange="updateMovies(this.value, document.getElementById('dates').value)">
             <option>Valitse teatteri</option>
             <option value="1012">Espoo</option>
             <option value="1039">Espoo: OMENA</option>
@@ -43,17 +42,14 @@
         </select>
     </section>
 
+    <input type="date" id="dates" onchange="updateMovies()">
    
-    <input type="date" id="dates" onchange="updateMovies(document.getElementById('theater').value, this.value)">
-
 
     <div id="laatikko"></div>
     <div class="elokuva-tiedot">
         <div class="title-container">
     </div>
-    
-        <script src="script.js"></script>
-    
-    </body>
+
+    <script src="script.js"></script>
+</body>
 </html>
-     
