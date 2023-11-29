@@ -21,13 +21,13 @@ function haeElokuvat(selectedTheater, selectedDate) {
         console.log (elokuvat)
             for (let i= 0; i<elokuvat.length; i++){
             let show= elokuvat[i]
+            let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
             let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
             let Title= show.getElementsByTagName('Title')[0].innerHTML
             let Genres= show.getElementsByTagName('Genres') [0].innerHTML
             let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML
             let Name= show.getElementsByTagName ('Name') [0].innerHTML
             let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML
-            let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
 
             console.log(Title)
             console.log(Genres)
