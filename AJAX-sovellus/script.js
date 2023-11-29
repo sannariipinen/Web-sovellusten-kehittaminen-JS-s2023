@@ -56,7 +56,19 @@ function haeElokuvat(selectedTheater, selectedDate) {
             document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
+            let movieElements = document.querySelectorAll('.elokuva-container');
 
+        movieElements.forEach((movieElement) => {
+            let wishlistButton = document.createElement('i');
+            wishlistButton.classList.add('fas', 'fa-heart', 'wishlist');
+            movieElement.appendChild(wishlistButton);
+
+            wishlistButton.addEventListener('click', () => {
+            wishlistButton.classList.toggle('active');
+            // Add/remove the movie to/from the wishlist
+            // You can store the wishlist in an array or any other data structure
+              });
+            });
 
         })
         

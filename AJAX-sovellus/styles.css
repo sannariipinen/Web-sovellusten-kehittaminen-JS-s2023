@@ -60,3 +60,11 @@ h4 {
   display: flex;
   align-items: center;
 }
+.wishlist {
+  color: gray;
+  cursor: pointer;
+}
+
+.wishlist.active {
+  color: red;
+}
