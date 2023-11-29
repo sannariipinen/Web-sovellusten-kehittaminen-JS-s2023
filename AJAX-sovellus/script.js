@@ -7,21 +7,26 @@ function updateMovies(selectedTheater, selectedDate) {
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
     console.log("Hae Elokuvat - Date:", selectedDate);
+
+    const formattedDate = new Date(selectedDate).toISOString();
+
     fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${new Date(selectedDate).toISOString()}`)
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
         .then(data => {
-            const elokuvat = data.querySelectorAll('Show');
-
+          const selectedDateShows = Array.from(data.querySelectorAll('Show')).filter(show => {
+            const showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
+            return showTime.toISOString().split('T')[0] === selectedDate.split('T')[0];
+          });
             const movieScheduleDiv= document.getElementById('laatikko');
             movieScheduleDiv.innerHTML= '';
 
             
-        console.log (elokuvat);
+        console.log (selectedDateShows);
 
-            for (let i= 0; i<elokuvat.length; i++) {
-            let show= elokuvat[i];
+            for (let i= 0; i< selectedDateShows.length; i++) {
+            let show= selectedDateShows[i];
             let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
             let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
             let Title= show.getElementsByTagName('Title')[0].innerHTML;
