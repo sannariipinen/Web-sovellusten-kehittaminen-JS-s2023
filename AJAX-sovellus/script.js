@@ -7,14 +7,12 @@ function updateMovies(selectedTheater, selectedDate) {
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
     console.log("Hae Elokuvat - Date:", selectedDate);
-
-    const formattedDate = new Date(selectedDate).toISOString();
-    const fullDate = `${selectedDate}T00:00:00`;
     fetch(`https://www.finnkino.fi/xml/Schedule/?area=${selectedTheater}&dt=${new Date(selectedDate).toISOString()}`)
 
         .then(response => response.text())
         .then(str => new DOMParser().parseFromString(str, "text/xml"))
         .then(data => {
+          console.log('API Response:', data);
           const selectedDateShows = Array.from(data.querySelectorAll('Show')).filter(show => {
             const showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
             return showTime.toISOString().split('T')[0] === selectedDate.split('T')[0];
