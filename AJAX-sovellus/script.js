@@ -40,17 +40,39 @@ function updateMovies(selectedTheater, selectedDate) {
 }
 document.addEventListener('DOMContentLoaded', function () {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  const heartIcons = document.querySelectorAll('.wishlist-heart');
+  const wishlistButtons = document.querySelectorAll('.wishlist-button');
 
-  heartIcons.forEach((heartIcon) => {
-      heartIcon.addEventListener('click', function () {
+  wishlistButtons.forEach((button) => {
+      button.addEventListener('click', function () {
           toggleWishlist(this);
       });
 
-      const title = heartIcon.getAttribute('data-title');
-      updateHeartColor(heartIcon, wishlist[title]);
-  })
+      const title = button.getAttribute('data-title');
+      updateButtonColor(button, wishlist[title]);
+  });
 });
+
+function toggleWishlist(button) {
+  const title = button.getAttribute('data-title');
+  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+
+  if (wishlist[title]) {
+      delete wishlist[title];
+  } else {
+      wishlist[title] = true;
+  }
+
+  localStorage.setItem('wishlist', JSON.stringify(wishlist));
+  updateButtonColor(button, wishlist[title]);
+}
+
+function updateButtonColor(button, isInWishlist) {
+  if (isInWishlist) {
+      button.classList.add('wishlist');
+  } else {
+      button.classList.remove('wishlist');
+  }
+}
 
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
@@ -107,26 +129,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             elokuvaContainer.innerHTML = html;
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
-function toggleWishlist(heartIcon) {
-  const title = heartIcon.getAttribute('data-title');
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-                        
-  if (wishlist[title]) {
-  delete wishlist[title];
-  } else {
-    wishlist[title] = true;
-  }
-                        
-  localStorage.setItem('wishlist', JSON.stringify(wishlist));
-    updateHeartColor(heartIcon, wishlist[title]);
-    }
-                        
-function updateHeartColor(heartIcon, isInWishlist) {
-  if (isInWishlist) {
-    heartIcon.classList.add('wishlist');
-    } else {
-      heartIcon.classList.remove('wishlist');
-      }
-    }
-  }
-)};
+          }
+        )};
+      
