@@ -1,7 +1,7 @@
 function updateMovies(selectedTheater, selectedDate) {
     console.log("Update Movies - Theater: ", selectedTheater);
     console.log("Update Movies - Date:", selectedDate);
-    haeElokuvat(selectedTheater, 'selectedDate');
+    haeElokuvat(selectedTheater, selectedDate);
 
 
 function haeElokuvat(selectedTheater, selectedDate) {
@@ -18,16 +18,17 @@ function haeElokuvat(selectedTheater, selectedDate) {
             movieScheduleDiv.innerHTML= '';
 
             
-        console.log (elokuvat)
-            for (let i= 0; i<elokuvat.length; i++){
-            let show= elokuvat[i]
+        console.log (elokuvat);
+
+            for (let i= 0; i<elokuvat.length; i++) {
+            let show= elokuvat[i];
             let showTime = new Date(show.querySelector('dttmShowStart').innerHTML);
             let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
-            let Title= show.getElementsByTagName('Title')[0].innerHTML
-            let Genres= show.getElementsByTagName('Genres') [0].innerHTML
-            let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML
-            let Name= show.getElementsByTagName ('Name') [0].innerHTML
-            let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML
+            let Title= show.getElementsByTagName('Title')[0].innerHTML;
+            let Genres= show.getElementsByTagName('Genres') [0].innerHTML;
+            let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML;
+            let Name= show.getElementsByTagName ('Name') [0].innerHTML;
+            let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML;
 
             console.log(Title)
             console.log(Genres)
@@ -52,7 +53,6 @@ function haeElokuvat(selectedTheater, selectedDate) {
             ; 
     
             elokuvaContainer.innerHTML = html;
-            document.querySelector('#laatikko').appendChild(elokuvaContainer);
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
             function toggleWishlist(heartIcon) {
