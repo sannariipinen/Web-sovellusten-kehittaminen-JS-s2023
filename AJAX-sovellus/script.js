@@ -79,14 +79,24 @@ function showNotification(movieTitle, isInWishlist) {
       ? `${movieTitle} has been added to your wishlist!`
       : `${movieTitle} has been removed from your wishlist.`;
 
-  if (Notification.permission === 'granted') {
-      new Notification(notificationMessage);
-  } else if (Notification.permission !== 'denied') {
+  // Check if the browser supports the Notification API
+  if (!('Notification' in window)) {
+      console.error('This browser does not support notifications.');
+      return;
+  }
+
+  // Request permission if needed
+  if (Notification.permission !== 'granted') {
       Notification.requestPermission().then((permission) => {
           if (permission === 'granted') {
               new Notification(notificationMessage);
+          } else {
+              console.warn('Notification permission denied.');
           }
       });
+  } else {
+      // Permission already granted
+      new Notification(notificationMessage);
   }
 }
 
