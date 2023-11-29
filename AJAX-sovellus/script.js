@@ -40,21 +40,22 @@ function updateMovies(selectedTheater, selectedDate) {
 }
 document.addEventListener('DOMContentLoaded', function () {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  const wishlistButtons = document.querySelectorAll('.wishlist-button');
+  const movieScheduleDiv = document.getElementById('laatikko');
 
-  wishlistButtons.forEach((button) => {
-      button.addEventListener('click', function () {
-          toggleWishlist(this);
-      });
+  // Event listener for all buttons inside the movie container
+  movieScheduleDiv.addEventListener('click', function (event) {
+      const target = event.target;
 
-      const title = button.getAttribute('data-title');
-      updateButtonColor(button, wishlist[title]);
+      // Check if the clicked element is a button with the 'wishlist-button' class
+      if (target.classList.contains('wishlist-button')) {
+          toggleWishlist(target);
+      }
   });
 });
 
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+  let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   if (wishlist[title]) {
       delete wishlist[title];
@@ -63,6 +64,10 @@ function toggleWishlist(button) {
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
+
+  // Update the variable after setting it in local storage
+  wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
+
   updateButtonColor(button, wishlist[title]);
 }
 
