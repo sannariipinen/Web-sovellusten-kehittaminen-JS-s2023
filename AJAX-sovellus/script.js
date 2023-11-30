@@ -100,13 +100,13 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
 console.log('Updated wishlist', wishlist);
-  updateButtonColor(button, title);
+  updateButtonColor(button, wishlist[title]);
   updateWishlistUI();
 };
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist= wishlist [title];
+  const isInWishlist= title === true;
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
