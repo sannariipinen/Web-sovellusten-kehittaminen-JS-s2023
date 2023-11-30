@@ -11,7 +11,7 @@ header {
   width: 100%;
   align-items: baseline;
   background-color: #000000;
-  padding: 8px 12px;
+  padding: 20px 15px;
   box-sizing: border-box;
 }
 
@@ -19,12 +19,13 @@ h4 {
   display: block;
   color:#f79bc6;
   text-align: center;
-  font-size: large;
+  font-size: 30px;
   font-weight: bolder;
   font-family:'Courier New', Courier, monospace ;
   padding: 8px 12px;
   margin: 0;
   margin-bottom: auto;
+  margin-left: 10px;
 }
 
 #theaterDropdown {
