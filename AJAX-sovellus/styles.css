@@ -77,7 +77,7 @@ h4 {
 #laatikko {
   margin: 20px;
   margin-right: 280px;
-  flex: 1px;
+  flex: 1;
 }
 
 .elokuva-container {
