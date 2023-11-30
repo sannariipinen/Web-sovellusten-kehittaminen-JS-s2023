@@ -53,33 +53,24 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 document.addEventListener('DOMContentLoaded', function () {
+  // Load the wishlist from local storage
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
   // Event listener for all buttons inside the movie container
   movieScheduleDiv.addEventListener('click', function (event) {
-    const target = event.target;
+      const target = event.target;
 
-    // Check if the clicked element is a button with the 'wishlist-button' class
-    if (target.classList.contains('wishlist-button')) {
-      toggleWishlist(target);
-    }
+      // Check if the clicked element is a button with the 'wishlist-button' class
+      if (target.classList.contains('wishlist-button')) {
+          toggleWishlist(target);
+      }
   });
 
-  // Update button colors based on wishlist when the page loads
-  updateButtonColors();
+  // Initialize button colors based on the wishlist
+  updateButtonColors(wishlist);
 
-  // Function to update button colors based on wishlist
-  function updateButtonColors() {
-    const buttons = document.getElementsByClassName('wishlist-button');
-
-    Array.from(buttons).forEach(button => {
-      const title = button.getAttribute('data-title');
-      const isInWishlist = wishlist[title];
-
-      updateButtonColor(button, isInWishlist);
-    });
-  }
+  // Rest of your existing code...
 });
 
 function toggleWishlist(button) {
@@ -87,9 +78,9 @@ function toggleWishlist(button) {
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   if (wishlist[title]) {
-    delete wishlist[title];
+      delete wishlist[title];
   } else {
-    wishlist[title] = true;
+      wishlist[title] = true;
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
@@ -98,10 +89,24 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   updateButtonColor(button, wishlist[title]);
+}
 
-  // Call the function to update all button colors after the wishlist is updated
-  updateButtonColors();
-};
+function updateButtonColors(wishlist) {
+  const wishlistButtons = document.querySelectorAll('.wishlist-button');
+
+  wishlistButtons.forEach((button) => {
+      const title = button.getAttribute('data-title');
+      updateButtonColor(button, wishlist[title]);
+  });
+}
+
+function updateButtonColor(button, isInWishlist) {
+  if (isInWishlist) {
+      button.classList.add('wishlist');
+  } else {
+      button.classList.remove('wishlist');
+  }
+}
 
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
