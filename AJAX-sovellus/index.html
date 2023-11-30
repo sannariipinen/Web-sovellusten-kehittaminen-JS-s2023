@@ -12,7 +12,10 @@
         <img src="./kuvat/logo.png" alt="Logo" width="65" height="55" class="d-inline-block align-text-top">
         <h4>MEIDÄN FINNKINO API</h4>
     </header>
+<div class="main-container">
 
+</div>
+    
     <section>
         <select id="theaterDropdown" onchange="updateMovies(this.value, document.getElementById('dateDropdown').value)">
             <option>Valitse teatteri</option>
@@ -42,6 +45,11 @@
         </select>
     </section>
 
+    <div id="wishlist-container" >
+        <h2>Toivelista</h2>
+        <ul id="wishlist-list"></ul>
+    </div>
+
     <section>
         <select id="dateDropdown" onchange="updateMovies(document.getElementById('theaterDropdown').value, this.value)">
         </select>
@@ -51,6 +59,7 @@
     <div id="laatikko"></div>
     <div class="elokuva-tiedot">
         <div class="title-container">
+    </div>
     </div>
 
     <script src="script.js"></script>

@@ -21,6 +21,37 @@ document.addEventListener('DOMContentLoaded', function () {
       .catch(error => console.error('Error fetching schedule dates:', error));
 
 
+loadWishlistFromStorage();
+
+function loadWishlistFromStorage() {
+  const wishlist= JSON.parse(localStorage.getItem('wishlist')) || {};
+  const wishlistButtons= document.querySelectorAll('.wishlist-button');
+
+  wishlistButtons.forEach(button=> {
+    const title= button.getAttribute('data-title');
+    updateButtonColor(button, wishlist[title]);
+  });
+    
+}
+
+function updateWishlistUI() {
+  const wishlistContainer= document.getElementById('wishlist-list');
+  wishlistContainer.innerHTML= '';
+  const wishlist= JSON.parse(localStorage.getItem('wishlist')) || {}; // muista viivat
+
+  for (const title in wishlist) {
+    if (wishlist.hasOwnProperty(title)) {
+      const listItem= document.createElement('li');
+      listItem.textContent= title;
+      wishlistContainer.appendChild(listItem);
+
+    }
+  }
+
+}
+
+updateWishlistUI();
+
 // Modify updateMovies function to default to tomorrow's date
 function updateMovies(selectedTheater, selectedDate) {
   console.log("Update Movies - Theater: ", selectedTheater);
@@ -82,16 +113,31 @@ function toggleWishlist(button) {
   // Update the variable after setting it in local storage
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
-  updateButtonColor(button, wishlist[title]);
+console.log('Updated wishlist', wishlist);
+  updateButtonColor(button, title);
+  updateWishlistUI();
 };
 
-function updateButtonColor(button, isInWishlist) {
+function updateButtonColor(button, title) {
+  console.log('Updating button color for:', title);
+  const isInWishlist= title === true;
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
       button.classList.remove('wishlist');
   }
 }
+const wishlistButtons= document.querySelectorAll('.wishlist-button');
+
+document.addEventListener('DOMContentLoaded', function () {
+  const wishlistButtons= document.querySelectorAll('.wishlist-button');
+
+wishlistButtons.forEach(button=> {
+  const title= button.getAttribute('data-title');
+  updateButtonColor(button);
+  });
+});
+
 
 
 function haeElokuvat(selectedTheater, selectedDate) {
