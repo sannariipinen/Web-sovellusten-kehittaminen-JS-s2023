@@ -48,17 +48,18 @@ h4 {
 
 .elokuva-tiedot {
   flex: 1;
+ 
 }
 
 .elokuva-tiedot h1 {
-  font-size: 24px;
+  font-size: 40px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold ;
   margin: 5px 0;
 }
 
 .elokuva-tiedot h2 {
-  font-size: 18px;
+  font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px 0;
 }
@@ -69,7 +70,7 @@ h4 {
 }
 .wishlist-button {
   cursor: pointer;
-  font-size: 1em;
+  font-size: 1.5em;
 }
 
 .wishlist {
