@@ -3,20 +3,18 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(response => response.text())
       .then(str => new DOMParser().parseFromString(str, "text/xml"))
       .then(data => {
-          const dateDropdown = document.getElementById('dateDropdown');
-          const dates = Array.from(data.querySelectorAll('dateTime'));
-          
-          // Clear existing options
-          dateDropdown.innerHTML = '<option>Valitse päivämäärä</option>';
+        const today = new Date();
+        const todayISO = today.toISOString().split('T')[0];
 
-          // Populate the date dropdown with available dates
-          dates.forEach(date => {
-              const option = document.createElement('option');
-              option.value = date.innerHTML;
-              option.textContent = new Date(date.innerHTML).toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
-              dateDropdown.appendChild(option);
-          });
+        const option = document.createElement('option');
+        option.value = todayISO;
+        option.textContent = today.toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+        dateDropdown.appendChild(option);
+        document.getElementById('dateDropdown').value = todayISO;
+          
+        updateMovies(document.getElementById('theaterDropdown').value, todayISO);
       })
+       
       .catch(error => console.error('Error fetching schedule dates:', error));
 });
 
@@ -149,27 +147,28 @@ function haeElokuvat(selectedTheater, selectedDate) {
             let formattedDateTime = `${showTime.getDate()}.${showTime.getMonth() + 1}. klo ${showTime.getHours()}.${showTime.getMinutes()}`;
             let Title= show.getElementsByTagName('Title')[0].innerHTML;
             let Genres= show.getElementsByTagName('Genres') [0].innerHTML;
-            let EventSmallImagePortrait =show.getElementsByTagName ('EventSmallImagePortrait') [0].innerHTML;
+            let EventMediumImagePortrait =show.getElementsByTagName ('EventMediumImagePortrait') [0].innerHTML;
             let Name= show.getElementsByTagName ('Name') [0].innerHTML;
             let RatingImageUrl = show.getElementsByTagName ('RatingImageUrl') [0].innerHTML;
 
             console.log(Title)
             console.log(Genres)
             console.log(formattedDateTime)
-            console.log(EventSmallImagePortrait)
+            console.log(EventMediumImagePortrait)
             console.log(Name)
             console.log(RatingImageUrl)
 
             let elokuvaContainer = document.createElement('div');
             elokuvaContainer.classList.add('elokuva-container');
             let html= `
-            <img src= "${EventSmallImagePortrait}" alt="${Title}">
+            <img src= "${EventMediumImagePortrait}" alt="${Title}">
             <div class="elokuva-tiedot">
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
             <h2>${formattedDateTime}</h2>
             <h2>${Name}</h2>
             <img src= "${RatingImageUrl}" alt="${Genres}">
+            <br>
             <button class="wishlist-button" data-title="${Title}">&#10084; Lisää toivelistalle </button>
         
             </div>`

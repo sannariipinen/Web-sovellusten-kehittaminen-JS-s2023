@@ -28,19 +28,25 @@ header {
   border: #000000;
   border-style: solid;
   margin: 20px;
-  width: 250px;
+  width: 300px;
   background-color: #f7cae2;
   padding: 10px;
   border-radius: 5px;
 
 }
 #wishlist-list {
-  list-style-type: none;
   padding: 0;
   max-height: 440px;
-  overflow-y: auto; 
+  overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
 }
 
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 30px;
+}
 h4 {
   display: block;
   color:#f79bc6;
@@ -102,14 +108,14 @@ h4 {
 }
 
 .elokuva-tiedot h1 {
-  font-size: 24px;
+  font-size: 45px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold ;
   margin: 5px 0;
 }
 
 .elokuva-tiedot h2 {
-  font-size: 18px;
+  font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px 0;
 }
