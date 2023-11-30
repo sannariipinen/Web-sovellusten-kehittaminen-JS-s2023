@@ -35,6 +35,11 @@ h4 {
   background-color: #000000;
   cursor: pointer;
 }
+#theaterDropdown option:hover {
+  cursor: pointer;
+  background-color: #f79bc6;
+  color:#000000;
+}
 #dateDropdown {
   padding: 10px;
   font-size: 16px;
@@ -43,10 +48,12 @@ h4 {
   background-color: #000000;
   cursor: pointer;
 }
-.option:hover {
+#dateDropdown option:hover {
+  cursor: pointer;
   background-color: #f79bc6;
   color:#000000;
 }
+
 #laatikko {
   margin: 20px;
 }
