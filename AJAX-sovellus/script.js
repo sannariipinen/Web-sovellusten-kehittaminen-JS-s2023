@@ -120,7 +120,7 @@ console.log('Updated wishlist', wishlist);
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist= title === true;
+  const isInWishlist= wishlist [title];
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
