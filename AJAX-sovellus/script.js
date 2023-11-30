@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 document.addEventListener('DOMContentLoaded', function () {
-  // Load the wishlist from local storage
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
@@ -66,11 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
           toggleWishlist(target);
       }
   });
-
-  // Initialize button colors based on the wishlist
-  updateButtonColors(wishlist);
-
-  // Rest of your existing code...
 });
 
 function toggleWishlist(button) {
@@ -89,16 +83,7 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   updateButtonColor(button, wishlist[title]);
-}
-
-function updateButtonColors(wishlist) {
-  const wishlistButtons = document.querySelectorAll('.wishlist-button');
-
-  wishlistButtons.forEach((button) => {
-      const title = button.getAttribute('data-title');
-      updateButtonColor(button, wishlist[title]);
-  });
-}
+};
 
 function updateButtonColor(button, isInWishlist) {
   if (isInWishlist) {
@@ -107,6 +92,7 @@ function updateButtonColor(button, isInWishlist) {
       button.classList.remove('wishlist');
   }
 }
+
 
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
