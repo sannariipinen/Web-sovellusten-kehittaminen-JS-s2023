@@ -94,13 +94,12 @@ function toggleWishlist(button) {
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
-  updateButtonColor(button, title);
 
   // Update the variable after setting it in local storage
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
 console.log('Updated wishlist', wishlist);
-  updateButtonColor(button, title);
+  updateButtonColor(button, wishlist [title]);
   updateWishlistUI();
 };
 
