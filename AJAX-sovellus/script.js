@@ -37,7 +37,7 @@ function loadWishlistFromStorage() {
 function updateWishlistUI() {
   const wishlistContainer= document.getElementById('wishlist-list');
   wishlistContainer.innerHTML= '';
-  const wishlist= JSON.parse(localStorage.getItem('wishlist')) || {}; // muista viivat
+  const wishlist= JSON.parse(localStorage.getItem('wishlist')) || {};
 
   for (const title in wishlist) {
     if (wishlist.hasOwnProperty(title)) {
@@ -83,20 +83,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
-document.addEventListener('DOMContentLoaded', function () {
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  const movieScheduleDiv = document.getElementById('laatikko');
-
-  // Event listener for all buttons inside the movie container
-  movieScheduleDiv.addEventListener('click', function (event) {
-      const target = event.target;
-
-      // Check if the clicked element is a button with the 'wishlist-button' class
-      if (target.classList.contains('wishlist-button')) {
-          toggleWishlist(target);
-      }
-  });
-});
 
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
@@ -113,30 +99,32 @@ function toggleWishlist(button) {
   // Update the variable after setting it in local storage
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
-console.log('Updated wishlist', wishlist);
-  updateButtonColor(button, title);
-  updateWishlistUI();
+  console.log('Updated wishlist:', wishlist);
+  updateButtonColor(button, wishlist[title]);
+  updateWishlistUI(); // Päivitä wishlistin näyttö
 };
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist= wishlist [title];
+  const isInWishlist = title === true;
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
       button.classList.remove('wishlist');
   }
 }
-const wishlistButtons= document.querySelectorAll('.wishlist-button');
+
+const wishlistButtons = document.querySelectorAll('.wishlist-button');
+
 
 document.addEventListener('DOMContentLoaded', function () {
-  const wishlistButtons= document.querySelectorAll('.wishlist-button');
+  const wishlistButtons = document.querySelectorAll('.wishlist-button');
 
-wishlistButtons.forEach(button=> {
-  const title= button.getAttribute('data-title');
-  updateButtonColor(button);
-  });
-});
+  wishlistButtons.forEach(button => {
+      const title = button.getAttribute('data-title');
+      updateButtonColor(button);
+    });
+  }); 
 
 
 
