@@ -4,21 +4,22 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(str => new DOMParser().parseFromString(str, "text/xml"))
       .then(data => {
           const dateDropdown = document.getElementById('dateDropdown');
-          const dates = Array.from(data.querySelectorAll('dateTime'));
+          const today = new Date();
+          const todayISO = today.toISOString().split('T')[0];
           
           // Clear existing options
-          dateDropdown.innerHTML = '<option>Valitse päivämäärä</option>';
+          // dateDropdown.innerHTML = '<option>Valitse päivämäärä</option>';
 
           // Populate the date dropdown with available dates
-          dates.forEach(date => {
+          // dates.forEach(date => {
               const option = document.createElement('option');
-              option.value = date.innerHTML;
-              option.textContent = new Date(date.innerHTML).toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
+              option.value = todayISO;
+              option.textContent = today.toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
               dateDropdown.appendChild(option);
           });
       })
       .catch(error => console.error('Error fetching schedule dates:', error));
-});
+
 
 // Modify updateMovies function to default to tomorrow's date
 function updateMovies(selectedTheater, selectedDate) {
