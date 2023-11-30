@@ -3,20 +3,21 @@ body {
   flex-direction: column;
   min-height: 100vh; /* 100% of the viewport height */
   margin: 0;
-  background-color: rgb(248, 196, 246);
+  background-image: linear-gradient(to right top, #f7d9ea, #f7cae2, #f7bbda, #f7acd1, #f79cc7, #f79bc7, #f79bc6, #f79ac6, #f8a8cf, #f9b6d8, #f9c4e0, #fad1e8);
 }
 
 .main-container {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
+
 
 header {
   display: flex;
   width: 100%;
   align-items: baseline;
   background-color: #000000;
-  padding: 8px 12px;
+  padding: 20px 15px;
   box-sizing: border-box;
 }
 
@@ -24,42 +25,75 @@ header {
   position: fixed;
   top: 0;
   right: 0;
+  border: #000000;
+  border-style: solid;
   margin: 20px;
-  width: 250px; /* Adjust the width as needed */
-  background-color: white; /* Adjust the background color as needed */
+  width: 300px;
+  background-color: #f7cae2;
   padding: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+
 }
-  
 #wishlist-list {
-  list-style-type: none;
-  padding: 0;
-  max-height: 400px; /* Optional: Add a max-height and overflow for a scrollable wishlist */
+  padding: 5px;
+  max-height: 440px;
   overflow-y: auto;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 20px;
+  list-style-type: none;
 }
 
+h2 {
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+  font-size: 30px;
+}
 h4 {
   display: block;
-  color: rgb(248, 196, 246);
+  color:#f79bc6;
   text-align: center;
-  font-size: large;
+  font-size: 30px;
   font-weight: bolder;
   font-family:'Courier New', Courier, monospace ;
   padding: 8px 12px;
   margin: 0;
   margin-bottom: auto;
+  margin-left: 10px;
+}
+
+#theaterDropdown {
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold ;
+  color:#f79bc6;
+  border-radius: 5px;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+#dateDropdown {
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold ;
+  color:#f79bc6;
+  border-radius: 5px;
+  background-color: #000000;
+  cursor: pointer;
 }
 
 #laatikko {
   margin: 20px;
-  margin-right: 280px; 
-  flex: 1; 
+  margin-right: 280px;
+  flex: 1;
 }
 
 .elokuva-container {
   display: flex;
   gap: 20px;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .elokuva-container img {
@@ -75,14 +109,14 @@ h4 {
 }
 
 .elokuva-tiedot h1 {
-  font-size: 24px;
+  font-size: 45px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold ;
   margin: 5px 0;
 }
 
 .elokuva-tiedot h2 {
-  font-size: 18px;
+  font-size: 25px;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px 0;
 }
@@ -94,9 +128,14 @@ h4 {
 .wishlist-button {
   cursor: pointer;
   font-size: 1em;
+  font-weight: bold ;
+  font-family: 'Courier New', Courier, monospace;
+  color:#000000;
+  border-radius: 5px;
+  background-color: transparent;
 }
 
 .wishlist {
-  background-color: red;
-  color: white;
+  background-color: black;
+  color: #f79bc6;
 }
