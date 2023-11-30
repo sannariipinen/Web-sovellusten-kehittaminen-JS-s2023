@@ -83,7 +83,19 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const movieScheduleDiv = document.getElementById('laatikko');
 
+  // Event listener for all buttons inside the movie container
+  movieScheduleDiv.addEventListener('click', function (event) {
+      const target = event.target;
+
+      // Check if the clicked element is a button with the 'wishlist-button' class
+      if (target.classList.contains('wishlist-button')) {
+          toggleWishlist(target);
+      }
+  })
+});
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
@@ -99,14 +111,14 @@ function toggleWishlist(button) {
   // Update the variable after setting it in local storage
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
-  console.log('Updated wishlist:', wishlist);
-  updateButtonColor(button, wishlist[title]);
-  updateWishlistUI(); // Päivitä wishlistin näyttö
+console.log('Updated wishlist', wishlist);
+  updateButtonColor(button, title);
+  updateWishlistUI();
 };
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist = title === true;
+  const isInWishlist= wishlist [title];
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
