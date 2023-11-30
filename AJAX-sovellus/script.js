@@ -83,19 +83,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
-document.addEventListener('DOMContentLoaded', function () {
-  const movieScheduleDiv = document.getElementById('laatikko');
 
-  // Event listener for all buttons inside the movie container
-  movieScheduleDiv.addEventListener('click', function (event) {
-      const target = event.target;
-
-      // Check if the clicked element is a button with the 'wishlist-button' class
-      if (target.classList.contains('wishlist-button')) {
-          toggleWishlist(target);
-      }
-  })
-});
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
