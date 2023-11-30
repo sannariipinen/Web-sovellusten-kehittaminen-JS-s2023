@@ -145,7 +145,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             console.log(html)
             ; 
     
-            elokuvaContainer.innerHTML = imageHTML + elokuvaTiedotHTML + wishlistButtonHTML;
+            elokuvaContainer.innerHTML = html;
             movieScheduleDiv.appendChild(elokuvaContainer);
             }
           }
