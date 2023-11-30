@@ -69,8 +69,8 @@ function updateMovies(selectedTheater, selectedDate) {
   console.log("After Default - Update Movies - Date:", selectedDate);
   haeElokuvat(selectedTheater, selectedDate);
 }
+
 document.addEventListener('DOMContentLoaded', function () {
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
   // Event listener for all buttons inside the movie container
@@ -81,23 +81,8 @@ document.addEventListener('DOMContentLoaded', function () {
       if (target.classList.contains('wishlist-button')) {
           toggleWishlist(target);
       }
-  });
+  })
 });
-document.addEventListener('DOMContentLoaded', function () {
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  const movieScheduleDiv = document.getElementById('laatikko');
-
-  // Event listener for all buttons inside the movie container
-  movieScheduleDiv.addEventListener('click', function (event) {
-      const target = event.target;
-
-      // Check if the clicked element is a button with the 'wishlist-button' class
-      if (target.classList.contains('wishlist-button')) {
-          toggleWishlist(target);
-      }
-  });
-});
-
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
@@ -121,7 +106,7 @@ console.log('Updated wishlist', wishlist);
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist= wishlist [title];
+  const isInWishlist = wishlist[title];
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
