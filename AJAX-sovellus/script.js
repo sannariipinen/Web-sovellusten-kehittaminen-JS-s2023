@@ -94,7 +94,7 @@ function toggleWishlist(button) {
   }
 
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
-  updateHeartColor(heartIcon, wishlist[title]);
+  updateButtonColor(button, title);
 
   // Update the variable after setting it in local storage
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
