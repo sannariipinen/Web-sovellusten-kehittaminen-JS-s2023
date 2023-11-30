@@ -39,7 +39,7 @@ function updateWishlistUI() {
     for (const title in wishlist) {
         if (wishlist.hasOwnProperty(title)) {
             const listItem = document.createElement('li');
-            listItem.textContent = title;
+            listItem.textContent = `• ${title}`;
             wishlistContainer.appendChild(listItem);
         }
     }

@@ -35,12 +35,12 @@ header {
 
 }
 #wishlist-list {
-  padding: 0;
+  padding: 5px;
   max-height: 440px;
   overflow-y: auto;
   font-family: 'Courier New', Courier, monospace;
   font-size: 20px;
-  list-style-type: circle;
+  list-style-type: none;
 }
 
 h2 {
