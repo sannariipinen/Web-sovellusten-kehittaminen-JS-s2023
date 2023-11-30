@@ -98,15 +98,10 @@ function toggleWishlist(button) {
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   updateButtonColor(button, wishlist[title]);
-};
 
-function updateButtonColor(button, isInWishlist) {
-  if (isInWishlist) {
-    button.classList.add('wishlist');
-  } else {
-    button.classList.remove('wishlist');
-  }
-}
+  // Call the function to update all button colors after the wishlist is updated
+  updateButtonColors();
+};
 
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
