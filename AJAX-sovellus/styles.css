@@ -25,6 +25,8 @@ header {
   position: fixed;
   top: 0;
   right: 0;
+  border: #000000;
+  border-style: solid;
   margin: 20px;
   width: 250px;
   background-color: #f7cae2;
