@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         option.textContent = today.toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
         dateDropdown.appendChild(option);
         document.getElementById('dateDropdown').value = todayISO;
-//päivitetään elokivat valitulla teatterilla ja päivämäärällä
+//päivitetään elokuvat valitulla teatterilla ja päivämäärällä
         updateMovies(document.getElementById('theaterDropdown').value, todayISO);
         
       })
