@@ -27,6 +27,35 @@ h4 {
   margin-bottom: auto;
 }
 
+#theaterDropdown {
+  padding: 10px;
+  font-size: 16px;
+  color:#f79bc6;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #000000;
+  cursor: pointer;
+}
+
+.option {
+  font-size: 14px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.option:checked {
+  background-color: #e0e0e0;
+  font-weight: bold;
+}
+#dateDropdown {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
 #laatikko {
   margin: 20px;
 }
@@ -48,18 +77,17 @@ h4 {
 
 .elokuva-tiedot {
   flex: 1;
- 
 }
 
 .elokuva-tiedot h1 {
-  font-size: 40px;
+  font-size: 24px;
   font-family: 'Courier New', Courier, monospace;
   font-weight: bold ;
   margin: 5px 0;
 }
 
 .elokuva-tiedot h2 {
-  font-size: 25px;
+  font-size: 18px;
   font-family: 'Courier New', Courier, monospace;
   margin: 5px 0;
 }
@@ -70,7 +98,7 @@ h4 {
 }
 .wishlist-button {
   cursor: pointer;
-  font-size: 1.5em;
+  font-size: 1em;
 }
 
 .wishlist {
