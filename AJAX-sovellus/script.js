@@ -27,9 +27,8 @@ function updateMovies(selectedTheater, selectedDate) {
 
 
   if (!selectedDate) {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      selectedDate = tomorrow.toISOString().split('T')[0];
+      const today = new Date();
+      selectedDate = today.toISOString().split('T')[0];
       document.getElementById('dateDropdown').value = selectedDate;
       
   }
