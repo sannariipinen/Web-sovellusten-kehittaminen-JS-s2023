@@ -3,7 +3,7 @@ body {
   flex-direction: column;
   min-height: 100vh; /* 100% of the viewport height */
   margin: 0;
-  background-image: linear-gradient(to right top, #ff8ae8, #f5adfa, #f0ccff, #f2e7ff, #ffffff);
+  background-image: linear-gradient(to right top, #f7d9ea, #f7cae2, #f7bbda, #f7acd1, #f79cc7, #f79bc7, #f79bc6, #f79ac6, #f8a8cf, #f9b6d8, #f9c4e0, #fad1e8);
 }
 
 header {
