@@ -70,7 +70,6 @@ function updateMovies(selectedTheater, selectedDate) {
   haeElokuvat(selectedTheater, selectedDate);
 }
 document.addEventListener('DOMContentLoaded', function () {
-  const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
   // Event listener for all buttons inside the movie container
@@ -106,7 +105,7 @@ console.log('Updated wishlist', wishlist);
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
-  const isInWishlist= title === true;
+  const isInWishlist= wishlist[title] === true;
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
@@ -172,7 +171,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             <h1>${Title}</h1>
             <h2>${Genres}</h2>
             <h2>${formattedDateTime}</h2>
-            <h2>${Name}</h2>
+            <h2>${Name}</h2> 
             <img src= "${RatingImageUrl}" alt="${Genres}">  
             <br>
             <button class="wishlist-button" data-title="${Title}">&#10084; Lisää toivelistalle </button>
