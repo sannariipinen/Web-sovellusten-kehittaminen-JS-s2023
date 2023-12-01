@@ -107,13 +107,16 @@ function updateMovies(selectedTheater, selectedDate) {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
-  $('#laatikko').on('click', '.wishlist-button', function () {
-    toggleWishlist(this);
-});
+  movieScheduleDiv.addEventListener('click', function (event) {
+      const target = event.target;
+      if (target.classList.contains('wishlist-button')) {
+          toggleWishlist(target);
+      }
+  });
 
 //Elokuva lisätään toivelistaan nappia painamalla
 function toggleWishlist(button) {
-  const title = button.getAttribute('data-title');
+  const title = $(button).data('title');
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
 
   if (wishlist[title]) {
@@ -126,10 +129,14 @@ function toggleWishlist(button) {
 
   // Päivitetään napin väriä ja toivelistaa
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  console.log('Updated wishlist:', wishlist);
+  console.log('Päivitetty toivelistaa:', wishlist);
   updateButtonColor(button, wishlist[title]);
   updateWishlistUI();
 };
+
+$(document).on('click', '#laatikko .wishlist-button', function () {
+  toggleWishlist(this);
+});
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
