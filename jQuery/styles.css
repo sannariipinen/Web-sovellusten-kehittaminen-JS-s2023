@@ -21,11 +21,6 @@ header {
   box-sizing: border-box !important;
 }
 
-img {
-  margin-right: 10px !important;
-  margin-top: 7px !important;
-}
-
 #wishlist-container {
   position: fixed;
   top: 0;
