@@ -64,9 +64,9 @@ h4 {
   font-weight: bolder !important;
   font-family:'Courier New', Courier, monospace !important;
   padding: 8px 12px !important;
-  margin: 0;
-  margin-bottom: auto;
-  margin-left: 10px;
+  margin: 0 !important;
+  margin-bottom: auto !important;
+  margin-left: 10px !important;
 }
 
 #theaterDropdown {
