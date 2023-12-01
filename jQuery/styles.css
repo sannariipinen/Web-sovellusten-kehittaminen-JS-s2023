@@ -32,8 +32,10 @@ header {
   background-color: #f7cae2;
   padding: 10px;
   border-radius: 5px;
+  cursor: pointer;
+  }
 
-}
+
 #wishlist-list {
   padding: 5px;
   max-height: 440px;
@@ -42,6 +44,7 @@ header {
   font-size: 20px;
   list-style-type: none;
 }
+
 
 h2 {
   font-family: 'Courier New', Courier, monospace;

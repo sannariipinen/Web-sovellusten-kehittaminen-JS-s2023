@@ -1,5 +1,19 @@
+// Fadein() tehoste
+$(document).ready(function () {
+ 
+  $('#header img, #header h4').hide();
+  $('#header img, #header h4').fadeIn(1000); 
+});
+
 $(document).ready(function () {
   // Ladataan sivu kun DOM on valmis
+  // Toivelistan slideup() ja slidedown()
+  $('#wishlist-title').hover(
+  $('#wishlist-container h2').click(function () {
+    $('#wishlist-list').slideToggle(500); // You can adjust the duration (500 milliseconds in this example)
+  }))
+  });
+  
   fetchScheduleDates();
 
   // Ladataan toivelista selaimen muistista
@@ -26,7 +40,7 @@ $(document).ready(function () {
   $('#laatikko').on('click', '.wishlist-button', function () {
     toggleWishlist(this);
   });
-});
+
 
 function fetchScheduleDates() {
   // Haetaan päivämäärät  Finnkinon XML-linkistä käyttäen JQueryä
