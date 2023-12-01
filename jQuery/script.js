@@ -1,35 +1,35 @@
 $(document).ready(function () {
-  // Load page when DOM is ready
+  // Ladataan sivu kun DOM on valmis
   fetchScheduleDates();
 
-  // Load wishlist from storage
+  // Ladataan toivelista selaimen muistista
   loadWishlistFromStorage();
 
-  // Update wishlist UI
+  // Päivitetään toivelista UI
   updateWishlistUI();
 
-  // Add event listener for theater dropdown change
+  // Lisätään tapahtumankäsittelijä elokuville
   $('#theaterDropdown').change(function () {
     const selectedTheater = $(this).val();
     const selectedDate = $('#dateDropdown').val();
     updateMovies(selectedTheater, selectedDate);
   });
 
-  // Add event listener for date dropdown change
+  // Lisätään tapahtumankäsittelijä päivämäärälle
   $('#dateDropdown').change(function () {
     const selectedTheater = $('#theaterDropdown').val();
     const selectedDate = $(this).val();
     updateMovies(selectedTheater, selectedDate);
   });
 
-  // Add event listener for wishlist button click
+  // Lisätään tapahtumankäsittelijä toivelistan napille
   $('#laatikko').on('click', '.wishlist-button', function () {
     toggleWishlist(this);
   });
 });
 
 function fetchScheduleDates() {
-  // Fetch schedule dates from Finnkino XML link using jQuery
+  // Haetaan päivämäärät  Finnkinon XML-linkistä käyttäen JQueryä
   $.ajax({
     url: 'https://www.finnkino.fi/xml/ScheduleDates/',
     method: 'GET',
@@ -39,7 +39,7 @@ function fetchScheduleDates() {
       const today = new Date();
       const todayISO = today.toISOString().split('T')[0];
 
-      // Add today's date to the date dropdown
+      // Lisää tämän päivän päivämäärä valintalaatikkoon
       $('#dateDropdown').append($('<option>', {
         value: todayISO,
         text: today.toLocaleDateString('en-FI', {
@@ -50,10 +50,12 @@ function fetchScheduleDates() {
         })
       }));
 
-      // Set the date dropdown value to today's date
+    
+      // Asetetaan päivämäärän arvo tälle päivälle
       $('#dateDropdown').val(todayISO);
 
-      // Update movies for the selected theater and date
+    
+      // Päivitetään elokuvat valitun teatterin ja päivämäärän mukaan
       updateMovies($('#theaterDropdown').val(), todayISO);
     },
     error: function (error) {
@@ -64,7 +66,7 @@ function fetchScheduleDates() {
 
 loadWishlistFromStorage();
 
-//ladataan toivelistan tiedot selaimen muistista
+//Ladataan toivelistan tiedot selaimen muistista
 function loadWishlistFromStorage() {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const wishlistButtons = document.querySelectorAll('.wishlist-button');
@@ -74,7 +76,7 @@ function loadWishlistFromStorage() {
     updateButtonColor(button, wishlist[title]);
   });
 }
-//päivitetään toivelistaa
+//Päivitetään toivelistaa
 function updateWishlistUI() {
     const wishlistContainer = document.getElementById('wishlist-list');
     wishlistContainer.innerHTML = '';
