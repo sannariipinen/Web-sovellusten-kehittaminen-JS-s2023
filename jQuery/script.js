@@ -137,11 +137,11 @@ function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
   const isInWishlist = title === true;
 
-//Lisätään tai poistetaan elokuva toivelistalta
+  //Lisätään tai poistetaan elokuva toivelistalta
   if (isInWishlist) {
-      button.classList.add('wishlist');
+      $(button).addClass('wishlist');
   } else {
-      button.classList.remove('wishlist');
+      $(button).removeClass('wishlist');
   }
 }
 
