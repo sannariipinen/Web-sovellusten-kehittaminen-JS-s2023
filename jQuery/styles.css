@@ -23,6 +23,7 @@ header {
 
 img {
   margin-right: 10px !important;
+  margin-top: 7px !important;
 }
 
 #wishlist-container {
@@ -145,20 +146,4 @@ h4 {
 .wishlist {
   background-color: black;
   color: #f79bc6;
-}
-
-footer {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: between;
-  align-items: center;
-  padding: 3px;
-  margin: 4px;
-  border-top: 1px solid #000000;
-}
-
-.footer-link {
-  margin-right: 12px;
-  text-decoration: none;
-  color: #000000;
 }
