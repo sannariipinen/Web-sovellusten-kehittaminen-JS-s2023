@@ -105,9 +105,13 @@ function updateMovies(selectedTheater, selectedDate) {
 }
 // Lisätään tapahtumakuuntelija toivelistan painikkeelle
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-  $(document).on('click', '#laatikko .wishlist-button', function () {
-    toggleWishlist(this);
-});
+  const movieScheduleDiv = document.getElementById('laatikko');
+  movieScheduleDiv.addEventListener('click', function (event) {
+      const target = event.target;
+      if (target.classList.contains('wishlist-button')) {
+          toggleWishlist(target);
+      }
+  });
 
 //Elokuva lisätään toivelistaan nappia painamalla
 function toggleWishlist(button) {
