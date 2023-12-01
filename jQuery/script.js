@@ -1,26 +1,66 @@
-//Ladataan sivu, kun DOM on valmis
-document.addEventListener('DOMContentLoaded', function () {
-  //Haetaan elokuvien näytösajat Finnkinon XML-linkistä
-  fetch(`https://www.finnkino.fi/xml/ScheduleDates/`)
-      .then(response => response.text())
-      .then(str => new DOMParser().parseFromString(str, "text/xml"))
-      .then(data => {
-  
-        const today = new Date();
-        const todayISO = today.toISOString().split('T')[0];
-//lisätään päivämäärä valintaan nykyinen päivä
-        const option = document.createElement('option');
-        option.value = todayISO;
-        option.textContent = today.toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
-        dateDropdown.appendChild(option);
-        document.getElementById('dateDropdown').value = todayISO;
-//päivitetään elokuvat valitulla teatterilla ja päivämäärällä
-        updateMovies(document.getElementById('theaterDropdown').value, todayISO);
-        
-      })
-       
-      .catch(error => console.error('Error fetching schedule dates:', error));
+$(document).ready(function () {
+  // Load page when DOM is ready
+  fetchScheduleDates();
+
+  // Load wishlist from storage
+  loadWishlistFromStorage();
+
+  // Update wishlist UI
+  updateWishlistUI();
+
+  // Add event listener for theater dropdown change
+  $('#theaterDropdown').change(function () {
+    const selectedTheater = $(this).val();
+    const selectedDate = $('#dateDropdown').val();
+    updateMovies(selectedTheater, selectedDate);
+  });
+
+  // Add event listener for date dropdown change
+  $('#dateDropdown').change(function () {
+    const selectedTheater = $('#theaterDropdown').val();
+    const selectedDate = $(this).val();
+    updateMovies(selectedTheater, selectedDate);
+  });
+
+  // Add event listener for wishlist button click
+  $('#laatikko').on('click', '.wishlist-button', function () {
+    toggleWishlist(this);
+  });
 });
+
+function fetchScheduleDates() {
+  // Fetch schedule dates from Finnkino XML link using jQuery
+  $.ajax({
+    url: 'https://www.finnkino.fi/xml/ScheduleDates/',
+    method: 'GET',
+    dataType: 'text',
+    success: function (data) {
+      const parsedData = new DOMParser().parseFromString(data, 'text/xml');
+      const today = new Date();
+      const todayISO = today.toISOString().split('T')[0];
+
+      // Add today's date to the date dropdown
+      $('#dateDropdown').append($('<option>', {
+        value: todayISO,
+        text: today.toLocaleDateString('en-FI', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'numeric',
+          day: 'numeric'
+        })
+      }));
+
+      // Set the date dropdown value to today's date
+      $('#dateDropdown').val(todayISO);
+
+      // Update movies for the selected theater and date
+      updateMovies($('#theaterDropdown').val(), todayISO);
+    },
+    error: function (error) {
+      console.error('Error fetching schedule dates:', error);
+    }
+  });
+}
 
 loadWishlistFromStorage();
 
