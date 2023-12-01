@@ -12,4 +12,4 @@ Logon tekemiseen hyödynsimme Canvaa. https://www.canva.com/
 
 Taustavärin tekemiseen käytimme CSS color generaattoria. https://mycolor.space/gradient
 
-Javaskriptin kirjoitus- ja syntaksivirheissä käytin ChatGPT:tä. https://chat.openai.com/auth/login
+Javaskriptin kirjoitus- ja syntaksivirheissä käytimme ChatGPT:tä. https://chat.openai.com/auth/login
