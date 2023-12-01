@@ -107,12 +107,9 @@ function updateMovies(selectedTheater, selectedDate) {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
-  movieScheduleDiv.addEventListener('click', function (event) {
-      const target = event.target;
-      if (target.classList.contains('wishlist-button')) {
-          toggleWishlist(target);
-      }
-  });
+  $('#laatikko').on('click', '.wishlist-button', function () {
+    toggleWishlist(this);
+});
 
 //Elokuva lisätään toivelistaan nappia painamalla
 function toggleWishlist(button) {
