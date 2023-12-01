@@ -2,7 +2,11 @@ Teimme AJAX-sovelluksen, REST APIa hyödyntäen. Päädyimme tekemään elokuva 
 
 Lähteet:
 Haimme elokuvat Finnkinon REST APIsta. https://www.finnkino.fi/xml/
+
 Projektissa käytimme W3schoolsin HTML, CSS ja JAVASCRIPT tutoriaaleja. https://www.w3schools.com/
+
 Logon tekemiseen hyödynsimme Canvaa. https://www.canva.com/
+
 Taustavärin tekemiseen käytimme CSS color generaattoria. https://mycolor.space/gradient
+
 Javaskriptin kirjoitus- ja syntaksivirheissä käytin ChatGPT:tä. https://chat.openai.com/auth/login
