@@ -1,18 +1,22 @@
+//Ladataan sivu, kun DOM on valmis
 document.addEventListener('DOMContentLoaded', function () {
+  //Haetaan elokuvien näytösajat Finnkinon XML-linkistä
   fetch(`https://www.finnkino.fi/xml/ScheduleDates/`)
       .then(response => response.text())
       .then(str => new DOMParser().parseFromString(str, "text/xml"))
       .then(data => {
+  
         const today = new Date();
         const todayISO = today.toISOString().split('T')[0];
-
+//lisätään päivämäärä valintaan nykyinen päivä
         const option = document.createElement('option');
         option.value = todayISO;
         option.textContent = today.toLocaleDateString('en-FI', { weekday: 'long', year: 'numeric', month: 'numeric', day: 'numeric' });
         dateDropdown.appendChild(option);
         document.getElementById('dateDropdown').value = todayISO;
-          
+//päivitetään elokuvat valitulla teatterilla ja päivämäärällä
         updateMovies(document.getElementById('theaterDropdown').value, todayISO);
+        
       })
        
       .catch(error => console.error('Error fetching schedule dates:', error));
@@ -20,6 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 loadWishlistFromStorage();
 
+//ladataan toivelistan tiedot selaimen muistista
 function loadWishlistFromStorage() {
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const wishlistButtons = document.querySelectorAll('.wishlist-button');
@@ -29,7 +34,7 @@ function loadWishlistFromStorage() {
     updateButtonColor(button, wishlist[title]);
   });
 }
-
+//päivitetään toivelistaa
 function updateWishlistUI() {
     const wishlistContainer = document.getElementById('wishlist-list');
     wishlistContainer.innerHTML = '';
@@ -47,39 +52,27 @@ function updateWishlistUI() {
 
 updateWishlistUI();
 
-// Modify updateMovies function to default to tomorrow's date
+// Muokataan funktiota, että ohjelma hakee tietyn teatterin elokuvat
 function updateMovies(selectedTheater, selectedDate) {
   console.log("Update Movies - Theater: ", selectedTheater);
   console.log("Update Movies - Date:", selectedDate);
 
-
-  if (!selectedDate) {
-      const tomorrow = new Date();
-      tomorrow.setDate(tomorrow.getDate() + 1);
-      selectedDate = tomorrow.toISOString().split('T')[0];
-      document.getElementById('dateDropdown').value = selectedDate;
-      
-  }
-
-
+    
   console.log("After Default - Update Movies - Date:", selectedDate);
   haeElokuvat(selectedTheater, selectedDate);
 }
-document.addEventListener('DOMContentLoaded', function () {
+// Lisätään tapahtumakuuntelija toivelistan painikkeelle
   const wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
   const movieScheduleDiv = document.getElementById('laatikko');
 
-  // Event listener for all buttons inside the movie container
   movieScheduleDiv.addEventListener('click', function (event) {
       const target = event.target;
-
-      // Check if the clicked element is a button with the 'wishlist-button' class
       if (target.classList.contains('wishlist-button')) {
           toggleWishlist(target);
       }
   });
-});
 
+//Elokuva lisätään toivelistaan nappia painamalla
 function toggleWishlist(button) {
   const title = button.getAttribute('data-title');
   let wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
@@ -89,20 +82,21 @@ function toggleWishlist(button) {
   } else {
       wishlist[title] = true;
   }
-
+// Tallennetaan toivelistan tiedot selaimen muistiin
   localStorage.setItem('wishlist', JSON.stringify(wishlist));
 
-  // Update the variable after setting it in local storage
+  // Päivitetään napin väriä ja toivelistaa
   wishlist = JSON.parse(localStorage.getItem('wishlist')) || {};
-
   console.log('Updated wishlist:', wishlist);
   updateButtonColor(button, wishlist[title]);
-  updateWishlistUI(); // Päivitä wishlistin näyttö
+  updateWishlistUI();
 };
 
 function updateButtonColor(button, title) {
   console.log('Updating button color for:', title);
   const isInWishlist = title === true;
+
+//Lisätään tai poistetaan elokuva toivelistalta
   if (isInWishlist) {
       button.classList.add('wishlist');
   } else {
@@ -110,18 +104,14 @@ function updateButtonColor(button, title) {
   }
 }
 
-const wishlistButtons = document.querySelectorAll('.wishlist-button');
-
-
-document.addEventListener('DOMContentLoaded', function () {
   const wishlistButtons = document.querySelectorAll('.wishlist-button');
 
   wishlistButtons.forEach(button => {
       const title = button.getAttribute('data-title');
       updateButtonColor(button);
     });
-  });      
-
+      
+//Haetaan elokuvat Finnkinon XML-linkistä
 function haeElokuvat(selectedTheater, selectedDate) {
     console.log("Hae Elokuvat - Theater: ", selectedTheater);
     console.log("Hae Elokuvat - Date:", selectedDate);
@@ -157,7 +147,7 @@ function haeElokuvat(selectedTheater, selectedDate) {
             console.log(EventMediumImagePortrait)
             console.log(Name)
             console.log(RatingImageUrl)
-
+ // Luodaan div-elementti, joka sisältää elokuvan tiedot 
             let elokuvaContainer = document.createElement('div');
             elokuvaContainer.classList.add('elokuva-container');
             let html= `
